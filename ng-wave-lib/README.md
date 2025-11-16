@@ -1,6 +1,6 @@
 # NG Wave - Angular Component Library
 
-A comprehensive Angular conversion of [React Bits](https://github.com/DavidHDev/react-bits), providing 110+ animated, interactive, and fully customizable Angular components for building memorable websites.
+A comprehensive Angular conversion of [React Bits](https://github.com/DavidHDev/react-bits), providing 110+ animated, interactive, and fully customizable Angular components for building memorable websites, more components added weekly.
 
 ## 🎯 Project Status
 
@@ -14,10 +14,7 @@ This is an ongoing conversion project. Currently implemented:
 - TypeScript interfaces and utilities
 
 ### 🚧 In Progress
-- Remaining Text Animations (22/23 components)
-- Animations category (26 components)
-- Components category (34 components)
-- Backgrounds category (33 components)
+
 
 ## 📦 Installation
 

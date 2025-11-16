@@ -155,6 +155,7 @@ Full documentation and live examples coming soon!
 **Looking for an Angular developer?**
 
 I specialize in:
+- Fullstack Web Development
 - Angular component libraries
 - Complex UI/UX implementations
 - React to Angular migrations
@@ -162,16 +163,16 @@ I specialize in:
 - WebGL/Three.js integrations
 
 ### Connect with me:
-- 💼 **LinkedIn**: [Add your LinkedIn URL here]
-- 🌐 **Portfolio**: [Add your portfolio URL here]
-- 📧 **Email**: [Add your email here]
-- 💼 **Hire Me**: [Add your freelance profile - Upwork/Fiverr/etc]
+- 💼 **LinkedIn**: [https://www.linkedin.com/in/mattcharlton/]
+- 🌐 **Portfolio**: [angularux.com]
+- 📧 **Email**: [mattcharlton33@gmail.com]
+- 💼 **Hire Me**: [gitplumbers.com]
 
 This library represents the conversion of 130+ React components to Angular with full feature parity. If you need similar work done, I'm available for hire!
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © 
 
 ## 🙏 Credits
 
@@ -183,4 +184,4 @@ If you find this library useful, please give it a star on GitHub and share it wi
 
 ---
 
-**Made with ❤️ by [Your Name]**
+
