@@ -1,0 +1,54 @@
+<div
+  #rootRef
+  class="sphere-root"
+  [class]="className"
+  [style.--segments-x]="segments"
+  [style.--segments-y]="segments"
+  [style.--overlay-blur-color]="overlayBlurColor"
+  [style.--tile-radius]="imageBorderRadius"
+  [style.--enlarge-radius]="openedImageBorderRadius"
+  [style.--image-filter]="grayscale ? 'grayscale(1)' : 'none'"
+>
+  <main #mainRef class="sphere-main">
+    <div class="stage">
+      <div #sphereRef class="sphere">
+        @for (it of itemsSignal(); track $index) {
+          <div
+            class="item"
+            [attr.data-src]="it.src"
+            [attr.data-offset-x]="it.x"
+            [attr.data-offset-y]="it.y"
+            [attr.data-size-x]="it.sizeX"
+            [attr.data-size-y]="it.sizeY"
+            [style.--offset-x]="it.x"
+            [style.--offset-y]="it.y"
+            [style.--item-size-x]="it.sizeX"
+            [style.--item-size-y]="it.sizeY"
+          >
+            <div
+              class="item__image"
+              role="button"
+              tabindex="0"
+              [attr.aria-label]="it.alt || 'Open image'"
+              (click)="onTileClick($event)"
+              (pointerup)="onTilePointerUp($event)"
+            >
+              <img [src]="it.src" draggable="false" [alt]="it.alt" />
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="overlay overlay--blur"></div>
+    <div class="edge-fade edge-fade--top"></div>
+    <div class="edge-fade edge-fade--bottom"></div>
+
+    <div class="viewer" #viewerRef>
+      <div #scrimRef class="scrim"></div>
+      <div #frameRef class="frame"></div>
+    </div>
+  </main>
+</div>
+

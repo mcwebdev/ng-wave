@@ -1,0 +1,16 @@
+<div class="default-animation" [ngStyle]="getWrapperStyle()">
+    <div #sceneRef class="default-animation--scene" [ngStyle]="getSceneStyle()">
+        @for (r of getCells(); track r) {
+        @for (c of getCells(); track c) {
+        <div class="cube" [attr.data-row]="r" [attr.data-col]="c">
+            <div class="cube-face cube-face--top"></div>
+            <div class="cube-face cube-face--bottom"></div>
+            <div class="cube-face cube-face--left"></div>
+            <div class="cube-face cube-face--right"></div>
+            <div class="cube-face cube-face--front"></div>
+            <div class="cube-face cube-face--back"></div>
+        </div>
+        }
+        }
+    </div>
+</div>

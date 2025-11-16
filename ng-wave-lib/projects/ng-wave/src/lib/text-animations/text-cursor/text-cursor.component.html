@@ -1,0 +1,15 @@
+<div #container class="text-cursor-container">
+  <div class="text-cursor-inner">
+    @for (item of trail(); track trackByItemId($index, item)) {
+      <div
+        class="text-cursor-item"
+        [style.left.px]="item.x"
+        [style.top.px]="item.y"
+        [attr.data-id]="item.id"
+      >
+        {{ text }}
+      </div>
+    }
+  </div>
+</div>
+

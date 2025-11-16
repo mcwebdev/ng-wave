@@ -1,0 +1,9 @@
+<div [class]="'animated-gradient-text ' + className">
+  @if (showBorder) {
+    <div class="gradient-overlay" [ngStyle]="gradientStyle()"></div>
+  }
+  <div class="text-content" [ngStyle]="gradientStyle()">
+    <ng-content></ng-content>
+  </div>
+</div>
+

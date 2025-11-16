@@ -1,0 +1,25 @@
+<div
+  #container
+  class="stack-container"
+  [style.width.px]="cardDimensions.width"
+  [style.height.px]="cardDimensions.height"
+  style="perspective: 600px"
+>
+  @for (card of cardsValue(); track card.id) {
+    <div
+      class="stack-card-rotate"
+      [attr.data-card-id]="card.id"
+      style="position: absolute; cursor: grab"
+    >
+      <div
+        class="stack-card"
+        [style.width.px]="cardDimensions.width"
+        [style.height.px]="cardDimensions.height"
+        (click)="onCardClick(card.id)"
+      >
+        <img [src]="card.img" [alt]="'card-' + card.id" class="stack-card-image" />
+      </div>
+    </div>
+  }
+</div>
+

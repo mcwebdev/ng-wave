@@ -1,0 +1,56 @@
+<div class="pc-card-wrapper" #wrapRef [class]="className" [ngStyle]="getCardStyle()">
+  @if (behindGlowEnabled) {
+    <div class="pc-behind"></div>
+  }
+  <div class="pc-card-shell" #shellRef>
+    <section class="pc-card">
+      <div class="pc-inside">
+        <div class="pc-shine"></div>
+        <div class="pc-glare"></div>
+        <div class="pc-content pc-avatar-content">
+          <img
+            class="avatar"
+            [src]="avatarUrl"
+            [alt]="name + ' avatar'"
+            loading="lazy"
+            (error)="onAvatarError($event)"
+          />
+          @if (showUserInfo) {
+            <div class="pc-user-info">
+              <div class="pc-user-details">
+                <div class="pc-mini-avatar">
+                  <img
+                    [src]="miniAvatarUrl || avatarUrl"
+                    [alt]="name + ' mini avatar'"
+                    loading="lazy"
+                    (error)="onMiniAvatarError($event)"
+                  />
+                </div>
+                <div class="pc-user-text">
+                  <div class="pc-handle">@{{ handle }}</div>
+                  <div class="pc-status">{{ status }}</div>
+                </div>
+              </div>
+              <button
+                class="pc-contact-btn"
+                (click)="onContactClick()"
+                style="pointer-events: auto;"
+                type="button"
+                [attr.aria-label]="'Contact ' + name"
+              >
+                {{ contactText }}
+              </button>
+            </div>
+          }
+        </div>
+        <div class="pc-content">
+          <div class="pc-details">
+            <h3>{{ name }}</h3>
+            <p>{{ title }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+

@@ -1,0 +1,15 @@
+<div #containerRef class="focus-container">
+    @for (word of words(); track $index) {
+    <span [attr.data-index]="$index"
+        [class]="'focus-word ' + (manualMode ? 'manual' : '') + (isActive($index) && !manualMode ? ' active' : '')"
+        [ngStyle]="getWordStyle($index)" (mouseenter)="onWordMouseEnter($index)" (mouseleave)="onWordMouseLeave()">{{
+        word }}</span>
+    }
+
+    <div #frameRef class="focus-frame" [ngStyle]="getFrameStyle()" [style.opacity]="currentIndex() >= 0 ? '1' : '0'">
+        <span class="corner top-left"></span>
+        <span class="corner top-right"></span>
+        <span class="corner bottom-left"></span>
+        <span class="corner bottom-right"></span>
+    </div>
+</div>

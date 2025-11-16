@@ -1,0 +1,27 @@
+<div [style.transform]="'scale(' + size + ')'" [class]="className">
+  <div
+    [class]="'folder ' + (open() ? 'open' : '')"
+    [ngStyle]="getFolderStyle()"
+    (click)="handleClick()"
+  >
+    <div class="folder__back">
+      @for (item of getPapers(); track $index) {
+        <div
+          class="paper"
+          [class]="'paper-' + ($index + 1)"
+          (mousemove)="handlePaperMouseMove($event, $index)"
+          (mouseleave)="handlePaperMouseLeave($index)"
+          [style.--magnet-x]="open() ? (paperOffsets()[$index]?.x || 0) + 'px' : '0px'"
+          [style.--magnet-y]="open() ? (paperOffsets()[$index]?.y || 0) + 'px' : '0px'"
+        >
+          @if (item) {
+            <ng-content [ngProjectAs]="'paper-' + ($index + 1)"></ng-content>
+          }
+        </div>
+      }
+      <div class="folder__front"></div>
+      <div class="folder__front right"></div>
+    </div>
+  </div>
+</div>
+

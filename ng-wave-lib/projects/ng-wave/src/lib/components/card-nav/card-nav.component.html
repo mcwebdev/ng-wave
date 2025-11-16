@@ -1,0 +1,70 @@
+<div [class]="'card-nav-container ' + className">
+  <nav
+    #nav
+    [class]="'card-nav ' + (isExpanded() ? 'open' : '')"
+    [style.backgroundColor]="baseColor"
+  >
+    <div class="card-nav-top">
+      <div
+        class="hamburger-menu"
+        [class.open]="isHamburgerOpen()"
+        (click)="toggleMenu()"
+        (keydown.enter)="toggleMenu()"
+        (keydown.space)="toggleMenu(); $event.preventDefault()"
+        role="button"
+        [attr.aria-label]="isExpanded() ? 'Close menu' : 'Open menu'"
+        [attr.aria-expanded]="isExpanded()"
+        tabindex="0"
+        [style.color]="menuColor || '#000'"
+      >
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+
+      <div class="logo-container">
+        <img [src]="logo" [alt]="logoAlt" class="logo" />
+      </div>
+
+      <button
+        type="button"
+        class="card-nav-cta-button"
+        [style.backgroundColor]="buttonBgColor"
+        [style.color]="buttonTextColor"
+        aria-label="Get Started"
+      >
+        Get Started
+      </button>
+    </div>
+
+    <div
+      #content
+      class="card-nav-content"
+      [attr.aria-hidden]="!isExpanded()"
+    >
+      @for (item of getDisplayItems(); track $index) {
+        <div
+          class="nav-card"
+          #cardRef
+          (mouseenter)="setCardRef(cardRef, $index)"
+          [style.backgroundColor]="item.bgColor"
+          [style.color]="item.textColor"
+        >
+          <div class="nav-card-label">{{ item.label }}</div>
+          <div class="nav-card-links">
+            @for (link of item.links || []; track $index) {
+              <a
+                class="nav-card-link"
+                [href]="link.href"
+                [attr.aria-label]="link.ariaLabel"
+              >
+                <span>↗</span>
+                {{ link.label }}
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </nav>
+</div>
+

@@ -1,0 +1,42 @@
+{
+  "name": "ng-wave",
+  "version": "1.0.0",
+  "description": "A comprehensive Angular component library with 130+ animated, interactive, and customizable components. Converted from React Bits with full feature parity, built with Angular Signals, GSAP animations, and Three.js for stunning visual effects.",
+  "keywords": [
+    "angular",
+    "components",
+    "ui",
+    "animations",
+    "three.js",
+    "gsap",
+    "backgrounds",
+    "text-animations",
+    "effects",
+    "webgl"
+  ],
+  "author": {
+    "name": "Matthew Charlton",
+    "email": "mattcharlton33@gmail.com",
+    "url": "https://www.linkedin.com/in/mattcharlton/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcwebdev/ng-wave"
+  },
+  "homepage": "https://github.com/mcwebdev/ng-wave#readme",
+  "bugs": {
+    "url": "https://github.com/mcwebdev/ng-wave/issues"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0 || ^19.0.0 || ^20.0.0",
+    "@angular/core": "^18.0.0 || ^19.0.0 || ^20.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "three": "^0.170.0",
+    "ogl": "^1.0.8",
+    "gsap": "^3.12.5"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,8 @@
+<div #containerRef [ngStyle]="getContainerStyle()">
+    <h1 #titleRef [class]="'text-pressure-title ' + getDynamicClassName()" [ngStyle]="getTitleStyle()">
+        @for (char of chars(); track $index) {
+        <span [attr.data-char]="char" [style.display]="'inline-block'" [style.color]="stroke ? '' : textColor">{{ char
+            }}</span>
+        }
+    </h1>
+</div>

@@ -1,0 +1,86 @@
+@if (tag === 'h1') {
+  <h1 #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </h1>
+} @else if (tag === 'h2') {
+  <h2 #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </h2>
+} @else if (tag === 'h3') {
+  <h3 #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </h3>
+} @else if (tag === 'span') {
+  <span #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </span>
+} @else if (tag === 'p') {
+  <p #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </p>
+} @else {
+  <div #container [class]="'text-type ' + className">
+    <span class="text-type__content" [style.color]="currentTextColor() || 'inherit'">
+      {{ displayedText() }}
+    </span>
+    @if (showCursor) {
+      <span
+        #cursor
+        [class]="'text-type__cursor ' + cursorClassName + ' ' + (shouldHideCursor() ? 'text-type__cursor--hidden' : '')"
+      >
+        {{ cursorCharacter }}
+      </span>
+    }
+  </div>
+}
+

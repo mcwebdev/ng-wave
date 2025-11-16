@@ -1,0 +1,22 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stroke span {
+    position: relative;
+}
+
+.stroke span::after {
+    content: attr(data-char);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: transparent;
+    z-index: -1;
+    -webkit-text-stroke-width: 3px;
+}
+
+.text-pressure-title {
+    margin: 0;
+}

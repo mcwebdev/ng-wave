@@ -1,0 +1,1428 @@
+<div class="hero-showcase">
+  <!-- Background Effects -->
+  @if (selectedEffect() === 'floating-lines') {
+  <div class="background-effect">
+    <ngw-floating-lines [enabledWaves]="['top', 'middle', 'bottom']"
+      [lineCount]="[getFormValueNumber('topLineCount'), getFormValueNumber('middleLineCount'), getFormValueNumber('bottomLineCount')]"
+      [lineDistance]="[getFormValueNumber('topLineDistance'), getFormValueNumber('middleLineDistance'), getFormValueNumber('bottomLineDistance')]"
+      [animationSpeed]="getFormValueNumber('animationSpeed')" [interactive]="getFormValueBoolean('interactive')"
+      [parallax]="getFormValueBoolean('parallax')" [parallaxStrength]="getFormValueNumber('parallaxStrength')"
+      [bendRadius]="getFormValueNumber('bendRadius')" [bendStrength]="getFormValueNumber('bendStrength')"
+      [mouseDamping]="getFormValueNumber('mouseDamping')" mixBlendMode="screen"></ngw-floating-lines>
+  </div>
+  } @else if (selectedEffect() === 'squares') {
+  <div class="background-effect">
+    <ngw-squares [direction]="getFormValueSquaresDirection()" [speed]="getFormValueNumber('speed')"
+      [borderColor]="getFormValueString('borderColor')" [squareSize]="getFormValueNumber('squareSize')"
+      [hoverFillColor]="getFormValueString('hoverFillColor')"></ngw-squares>
+  </div>
+  } @else if (selectedEffect() === 'waves') {
+  <div class="background-effect">
+    <ngw-waves [lineColor]="getFormValueString('lineColor')" [backgroundColor]="getFormValueString('backgroundColor')"
+      [waveSpeedX]="getFormValueNumber('waveSpeedX')" [waveSpeedY]="getFormValueNumber('waveSpeedY')"
+      [waveAmpX]="getFormValueNumber('waveAmpX')" [waveAmpY]="getFormValueNumber('waveAmpY')"></ngw-waves>
+  </div>
+  } @else if (selectedEffect() === 'dot-grid') {
+  <div class="background-effect">
+    <ngw-dot-grid [dotSize]="getFormValueNumber('dotSize')" [gap]="getFormValueNumber('gap')"
+      [baseColor]="getFormValueString('baseColor')" [activeColor]="getFormValueString('activeColor')"
+      [proximity]="getFormValueNumber('proximity')" [speedTrigger]="getFormValueNumber('speedTrigger')"
+      [shockRadius]="getFormValueNumber('shockRadius')" [shockStrength]="getFormValueNumber('shockStrength')"
+      [maxSpeed]="getFormValueNumber('maxSpeed')" [resistance]="getFormValueNumber('resistance')"
+      [returnDuration]="getFormValueNumber('returnDuration')"></ngw-dot-grid>
+  </div>
+  } @else if (selectedEffect() === 'grid-motion') {
+  <div class="background-effect">
+    <ngw-grid-motion [gradientColor]="getFormValueString('gradientColor')"
+      [items]="['NG', 'Wave', 'Angular', 'Components', 'Library', '130+', 'Animations', 'Interactive']"></ngw-grid-motion>
+  </div>
+  } @else if (selectedEffect() === 'aurora') {
+  <div class="background-effect">
+    <ngw-aurora [colorStops]="getAuroraColorStops()" [amplitude]="getFormValueNumber('amplitude')"
+      [blend]="getFormValueNumber('blend')" [speed]="getFormValueNumber('speed')"></ngw-aurora>
+  </div>
+  } @else if (selectedEffect() === 'beams') {
+  <div class="background-effect">
+    <ngw-beams [lightColor]="getFormValueString('lightColor')" [beamWidth]="getFormValueNumber('beamWidth')"
+      [beamHeight]="getFormValueNumber('beamHeight')" [beamNumber]="getFormValueNumber('beamNumber')"
+      [speed]="getFormValueNumber('speed')" [noiseIntensity]="getFormValueNumber('noiseIntensity')"
+      [scale]="getFormValueNumber('scale')" [rotation]="getFormValueNumber('rotation')"></ngw-beams>
+  </div>
+  } @else if (selectedEffect() === 'plasma') {
+  <div class="background-effect">
+    <ngw-plasma [color]="getFormValueString('color')" [speed]="getFormValueNumber('speed')"
+      [direction]="getFormValuePlasmaDirection()" [scale]="getFormValueNumber('scale')"
+      [opacity]="getFormValueNumber('opacity')"
+      [mouseInteractive]="getFormValueBoolean('mouseInteractive')"></ngw-plasma>
+  </div>
+  } @else if (selectedEffect() === 'orb') {
+  <div class="background-effect">
+    <ngw-orb [hue]="getFormValueNumber('hue')" [hoverIntensity]="getFormValueNumber('hoverIntensity')"
+      [rotateOnHover]="getFormValueBoolean('rotateOnHover')"
+      [forceHoverState]="getFormValueBoolean('forceHoverState')"></ngw-orb>
+  </div>
+  } @else if (selectedEffect() === 'particles') {
+  <div class="background-effect">
+    <ngw-particles [particleColors]="getParticleColors()" [particleCount]="getFormValueNumber('particleCount')"
+      [particleSpread]="getFormValueNumber('particleSpread')" [speed]="getFormValueNumber('speed')"
+      [particleBaseSize]="getFormValueNumber('particleBaseSize')"
+      [moveParticlesOnHover]="getFormValueBoolean('moveParticlesOnHover')"
+      [alphaParticles]="getFormValueBoolean('alphaParticles')"
+      [disableRotation]="getFormValueBoolean('disableRotation')"></ngw-particles>
+  </div>
+  } @else if (selectedEffect() === 'ripple-grid') {
+  <div class="background-effect">
+    <ngw-ripple-grid [enableRainbow]="getFormValueBoolean('enableRainbow')"
+      [gridColor]="getFormValueString('gridColor')" [rippleIntensity]="getFormValueNumber('rippleIntensity')"
+      [gridSize]="getFormValueNumber('gridSize')" [gridThickness]="getFormValueNumber('gridThickness')"
+      [fadeDistance]="getFormValueNumber('fadeDistance')" [vignetteStrength]="getFormValueNumber('vignetteStrength')"
+      [glowIntensity]="getFormValueNumber('glowIntensity')" [opacity]="getFormValueNumber('opacity')"
+      [gridRotation]="getFormValueNumber('gridRotation')" [mouseInteraction]="getFormValueBoolean('mouseInteraction')"
+      [mouseInteractionRadius]="getFormValueNumber('mouseInteractionRadius')"></ngw-ripple-grid>
+  </div>
+  } @else if (selectedEffect() === 'dither') {
+  <div class="background-effect">
+    <ngw-dither [waveColor]="getDitherWaveColor()" [colorNum]="getFormValueNumber('colorNum')"
+      [waveAmplitude]="getFormValueNumber('waveAmplitude')" [waveFrequency]="getFormValueNumber('waveFrequency')"
+      [disableAnimation]="getFormValueBoolean('disableAnimation')" [waveSpeed]="getFormValueNumber('waveSpeed')"
+      [enableMouseInteraction]="getFormValueBoolean('enableMouseInteraction')"
+      [mouseRadius]="getFormValueNumber('mouseRadius')"></ngw-dither>
+  </div>
+  } @else if (selectedEffect() === 'galaxy') {
+  <div class="background-effect">
+    <ngw-galaxy [mouseInteraction]="getFormValueBoolean('mouseInteraction')"
+      [mouseRepulsion]="getFormValueBoolean('mouseRepulsion')" [density]="getFormValueNumber('density')"
+      [glowIntensity]="getFormValueNumber('glowIntensity')" [saturation]="getFormValueNumber('saturation')"
+      [hueShift]="getFormValueNumber('hueShift')" [twinkleIntensity]="getFormValueNumber('twinkleIntensity')"
+      [rotationSpeed]="getFormValueNumber('rotationSpeed')"
+      [repulsionStrength]="getFormValueNumber('repulsionStrength')"
+      [autoCenterRepulsion]="getFormValueNumber('autoCenterRepulsion')" [starSpeed]="getFormValueNumber('starSpeed')"
+      [speed]="getFormValueNumber('speed')"></ngw-galaxy>
+  </div>
+  } @else if (selectedEffect() === 'lightning') {
+  <div class="background-effect">
+    <ngw-lightning [hue]="getFormValueNumber('hue')" [xOffset]="getFormValueNumber('xOffset')"
+      [speed]="getFormValueNumber('speed')" [intensity]="getFormValueNumber('intensity')"
+      [size]="getFormValueNumber('size')"></ngw-lightning>
+  </div>
+  } @else if (selectedEffect() === 'balatro') {
+  <div class="background-effect">
+    <ngw-balatro [color1]="getFormValueString('color1')" [color2]="getFormValueString('color2')"
+      [color3]="getFormValueString('color3')" [pixelFilter]="getFormValueNumber('pixelFilter')"
+      [mouseInteraction]="getFormValueBoolean('mouseInteraction')"
+      [isRotate]="getFormValueBoolean('isRotate')"></ngw-balatro>
+  </div>
+  } @else if (selectedEffect() === 'color-bends') {
+  <div class="background-effect">
+    <ngw-color-bends [colors]="getColorBendsColors()" [rotation]="getFormValueNumber('rotation')"
+      [autoRotate]="getFormValueNumber('autoRotate')" [speed]="getFormValueNumber('speed')"
+      [scale]="getFormValueNumber('scale')" [frequency]="getFormValueNumber('frequency')"
+      [warpStrength]="getFormValueNumber('warpStrength')" [mouseInfluence]="getFormValueNumber('mouseInfluence')"
+      [parallax]="getFormValueNumber('parallax')" [noise]="getFormValueNumber('noise')"></ngw-color-bends>
+  </div>
+  } @else if (selectedEffect() === 'light-rays') {
+  <div class="background-effect">
+    <ngw-light-rays [raysOrigin]="getFormValueLightRaysOrigin()" [raysColor]="getFormValueString('raysColor')"
+      [raysSpeed]="getFormValueNumber('raysSpeed')" [lightSpread]="getFormValueNumber('lightSpread')"
+      [rayLength]="getFormValueNumber('rayLength')" [pulsating]="getFormValueBoolean('pulsating')"
+      [fadeDistance]="getFormValueNumber('fadeDistance')" [saturation]="getFormValueNumber('saturation')"
+      [mouseInfluence]="getFormValueNumber('mouseInfluence')" [noiseAmount]="getFormValueNumber('noiseAmount')"
+      [distortion]="getFormValueNumber('distortion')"></ngw-light-rays>
+  </div>
+  } @else if (selectedEffect() === 'ballpit') {
+  <div class="background-effect">
+    <ngw-ballpit [count]="getFormValueNumber('count')" [gravity]="getFormValueNumber('gravity')"
+      [friction]="getFormValueNumber('friction')" [wallBounce]="getFormValueNumber('wallBounce')"
+      [followCursor]="getFormValueBoolean('followCursor')"></ngw-ballpit>
+  </div>
+  } @else if (selectedEffect() === 'dark-veil') {
+  <div class="background-effect">
+    <ngw-dark-veil [hueShift]="getFormValueNumber('hueShift')" [noiseIntensity]="getFormValueNumber('noiseIntensity')"
+      [scanlineIntensity]="getFormValueNumber('scanlineIntensity')" [speed]="getFormValueNumber('speed')"
+      [scanlineFrequency]="getFormValueNumber('scanlineFrequency')"
+      [warpAmount]="getFormValueNumber('warpAmount')"></ngw-dark-veil>
+  </div>
+  } @else if (selectedEffect() === 'faulty-terminal') {
+  <div class="background-effect">
+    <ngw-faulty-terminal [scale]="getFormValueNumber('scale')" [digitSize]="getFormValueNumber('digitSize')"
+      [timeScale]="getFormValueNumber('timeScale')" [scanlineIntensity]="getFormValueNumber('scanlineIntensity')"
+      [curvature]="getFormValueNumber('curvature')" [tint]="getFormValueString('tint')"
+      [mouseReact]="getFormValueBoolean('mouseReact')" [mouseStrength]="getFormValueNumber('mouseStrength')"
+      [noiseAmp]="getFormValueNumber('noiseAmp')" [brightness]="getFormValueNumber('brightness')"></ngw-faulty-terminal>
+  </div>
+  } @else if (selectedEffect() === 'gradient-blinds') {
+  <div class="background-effect">
+    <ngw-gradient-blinds [gradientColors]="getFormValueString('gradientColors').split(',')"
+      [angle]="getFormValueNumber('angle')" [noise]="getFormValueNumber('noise')"
+      [blindCount]="getFormValueNumber('blindCount')" [blindMinWidth]="getFormValueNumber('blindMinWidth')"
+      [mouseDampening]="getFormValueNumber('mouseDampening')" [mirrorGradient]="getFormValueBoolean('mirrorGradient')"
+      [spotlightRadius]="getFormValueNumber('spotlightRadius')"
+      [spotlightSoftness]="getFormValueNumber('spotlightSoftness')"
+      [spotlightOpacity]="getFormValueNumber('spotlightOpacity')" [distortAmount]="getFormValueNumber('distortAmount')"
+      [shineDirection]="getFormValueShineDirection()"
+      [mixBlendMode]="getFormValueString('mixBlendMode')"></ngw-gradient-blinds>
+  </div>
+  } @else if (selectedEffect() === 'grid-distortion') {
+  <div class="background-effect">
+    <ngw-grid-distortion [grid]="getFormValueNumber('grid')" [mouse]="getFormValueNumber('mouse')"
+      [strength]="getFormValueNumber('strength')" [relaxation]="getFormValueNumber('relaxation')"
+      [imageSrc]="getFormValueString('imageSrc')"></ngw-grid-distortion>
+  </div>
+  } @else if (selectedEffect() === 'grid-scan') {
+  <div class="background-effect">
+    <ngw-grid-scan [sensitivity]="getFormValueNumber('sensitivity')"
+      [lineThickness]="getFormValueNumber('lineThickness')" [linesColor]="getFormValueString('linesColor')"
+      [scanColor]="getFormValueString('scanColor')" [scanOpacity]="getFormValueNumber('scanOpacity')"
+      [gridScale]="getFormValueNumber('gridScale')" [lineStyle]="getFormValueLineStyle()"
+      [lineJitter]="getFormValueNumber('lineJitter')" [scanDirection]="getFormValueScanDirection()"
+      [noiseIntensity]="getFormValueNumber('noiseIntensity')" [scanGlow]="getFormValueNumber('scanGlow')"
+      [scanSoftness]="getFormValueNumber('scanSoftness')" [scanPhaseTaper]="getFormValueNumber('scanPhaseTaper')"
+      [scanDuration]="getFormValueNumber('scanDuration')" [scanDelay]="getFormValueNumber('scanDelay')"
+      [enableGyro]="getFormValueBoolean('enableGyro')" [scanOnClick]="getFormValueBoolean('scanOnClick')"
+      [snapBackDelay]="getFormValueNumber('snapBackDelay')"></ngw-grid-scan>
+  </div>
+  } @else if (selectedEffect() === 'iridescence') {
+  <div class="background-effect">
+    <ngw-iridescence [color]="getFormValueColorArray('color')" [speed]="getFormValueNumber('speed')"
+      [amplitude]="getFormValueNumber('amplitude')" [mouseReact]="getFormValueBoolean('mouseReact')"></ngw-iridescence>
+  </div>
+  } @else if (selectedEffect() === 'letter-glitch') {
+  <div class="background-effect">
+    <ngw-letter-glitch [glitchColors]="getFormValueString('glitchColors').split(',')"
+      [glitchSpeed]="getFormValueNumber('glitchSpeed')" [centerVignette]="getFormValueBoolean('centerVignette')"
+      [outerVignette]="getFormValueBoolean('outerVignette')" [smooth]="getFormValueBoolean('smooth')"
+      [characters]="getFormValueString('characters')"></ngw-letter-glitch>
+  </div>
+  } @else if (selectedEffect() === 'liquid-chrome') {
+  <div class="background-effect">
+    <ngw-liquid-chrome [baseColor]="getFormValueColorArray('baseColor')" [speed]="getFormValueNumber('speed')"
+      [amplitude]="getFormValueNumber('amplitude')" [frequencyX]="getFormValueNumber('frequencyX')"
+      [frequencyY]="getFormValueNumber('frequencyY')"
+      [interactive]="getFormValueBoolean('interactive')"></ngw-liquid-chrome>
+  </div>
+  } @else if (selectedEffect() === 'threads') {
+  <div class="background-effect">
+    <ngw-threads [color]="getFormValueColorArray('color')" [amplitude]="getFormValueNumber('amplitude')"
+      [distance]="getFormValueNumber('distance')"
+      [enableMouseInteraction]="getFormValueBoolean('enableMouseInteraction')"></ngw-threads>
+  </div>
+  } @else if (selectedEffect() === 'silk') {
+  <div class="background-effect">
+    <ngw-silk [speed]="getFormValueNumber('speed')" [scale]="getFormValueNumber('scale')"
+      [color]="getFormValueString('color')" [noiseIntensity]="getFormValueNumber('noiseIntensity')"
+      [rotation]="getFormValueNumber('rotation')"></ngw-silk>
+  </div>
+  } @else if (selectedEffect() === 'prism') {
+  <div class="background-effect">
+    <ngw-prism [height]="getFormValueNumber('height')" [baseWidth]="getFormValueNumber('baseWidth')"
+      [animationType]="getFormValuePrismAnimationType()" [glow]="getFormValueNumber('glow')"
+      [noise]="getFormValueNumber('noise')" [transparent]="getFormValueBoolean('transparent')"
+      [scale]="getFormValueNumber('scale')" [hueShift]="getFormValueNumber('hueShift')"
+      [colorFrequency]="getFormValueNumber('colorFrequency')" [hoverStrength]="getFormValueNumber('hoverStrength')"
+      [inertia]="getFormValueNumber('inertia')" [bloom]="getFormValueNumber('bloom')"
+      [suspendWhenOffscreen]="getFormValueBoolean('suspendWhenOffscreen')"
+      [timeScale]="getFormValueNumber('timeScale')"></ngw-prism>
+  </div>
+  } @else if (selectedEffect() === 'prismatic-burst') {
+  <div class="background-effect">
+    <ngw-prismatic-burst [intensity]="getFormValueNumber('intensity')" [speed]="getFormValueNumber('speed')"
+      [animationType]="getFormValuePrismaticBurstAnimationType()"
+      [colors]="getFormValueString('colors') ? getFormValueString('colors').split(',') : []"
+      [distort]="getFormValueNumber('distort')" [paused]="getFormValueBoolean('paused')"
+      [hoverDampness]="getFormValueNumber('hoverDampness')" [rayCount]="getFormValueNumber('rayCount')"
+      [mixBlendMode]="getFormValueString('mixBlendMode')"></ngw-prismatic-burst>
+  </div>
+  } @else if (selectedEffect() === 'pixel-blast') {
+  <div class="background-effect">
+    <ngw-pixel-blast [variant]="getFormValuePixelBlastVariant()" [pixelSize]="getFormValueNumber('pixelSize')"
+      [color]="getFormValueString('color')" [patternScale]="getFormValueNumber('patternScale')"
+      [patternDensity]="getFormValueNumber('patternDensity')" [pixelSizeJitter]="getFormValueNumber('pixelSizeJitter')"
+      [enableRipples]="getFormValueBoolean('enableRipples')"
+      [rippleIntensityScale]="getFormValueNumber('rippleIntensityScale')"
+      [rippleThickness]="getFormValueNumber('rippleThickness')" [rippleSpeed]="getFormValueNumber('rippleSpeed')"
+      [autoPauseOffscreen]="getFormValueBoolean('autoPauseOffscreen')" [speed]="getFormValueNumber('speed')"
+      [transparent]="getFormValueBoolean('transparent')" [edgeFade]="getFormValueNumber('edgeFade')"></ngw-pixel-blast>
+  </div>
+  } @else if (selectedEffect() === 'neural-web') {
+  <div class="background-effect">
+    <ngw-neural-web [particleCount]="getFormValueNumber('particleCount')"
+      [connectionDistance]="getFormValueNumber('connectionDistance')" [particleSpeed]="getFormValueNumber('particleSpeed')"
+      [mouseRadius]="getFormValueNumber('mouseRadius')" [mouseForce]="getFormValueNumber('mouseForce')"
+      [pulseSpeed]="getFormValueNumber('pulseSpeed')" [lineOpacity]="getFormValueNumber('lineOpacity')"
+      [particleSize]="getFormValueNumber('particleSize')" [enableMouse]="getFormValueBoolean('enableMouse')"
+      [enablePulse]="getFormValueBoolean('enablePulse')" [depthEffect]="getFormValueBoolean('depthEffect')"></ngw-neural-web>
+  </div>
+  } @else if (selectedEffect() === 'liquid-ether') {
+  <div class="background-effect">
+    <ngw-liquid-ether [mouseForce]="getFormValueNumber('mouseForce')" [cursorSize]="getFormValueNumber('cursorSize')"
+      [isViscous]="getFormValueBoolean('isViscous')" [viscous]="getFormValueNumber('viscous')"
+      [iterationsViscous]="getFormValueNumber('iterationsViscous')"
+      [iterationsPoisson]="getFormValueNumber('iterationsPoisson')" [dt]="getFormValueNumber('dt')"
+      [BFECC]="getFormValueBoolean('BFECC')" [resolution]="getFormValueNumber('resolution')"
+      [isBounce]="getFormValueBoolean('isBounce')"
+      [colors]="getFormValueString('colors') ? getFormValueString('colors').split(',') : ['#5227FF', '#FF9FFC', '#B19EEF']"
+      [autoDemo]="getFormValueBoolean('autoDemo')" [autoSpeed]="getFormValueNumber('autoSpeed')"
+      [autoIntensity]="getFormValueNumber('autoIntensity')"></ngw-liquid-ether>
+  </div>
+  }
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+    @if (selectedEffect() === 'blur-text') {
+    <div class="hero-text-container">
+      <ngw-blur-text [text]="heroText" [delay]="getFormValueNumber('delay')" [animateBy]="getFormValueAnimateBy()"
+        [direction]="getFormValueDirection()" [threshold]="getFormValueNumber('threshold')"
+        [stepDuration]="getFormValueNumber('stepDuration')" className="hero-title"></ngw-blur-text>
+      <ngw-blur-text [text]="heroSubtext" [delay]="getFormValueNumber('delay') - 50"
+        [animateBy]="getFormValueAnimateBy()" [direction]="getFormValueDirection()"
+        [threshold]="getFormValueNumber('threshold')" [stepDuration]="getFormValueNumber('stepDuration')"
+        className="hero-subtitle"></ngw-blur-text>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'gradient-text') {
+    <div class="hero-text-container">
+      <ngw-gradient-text [colors]="getGradientTextColors()" [animationSpeed]="getFormValueNumber('animationSpeed')"
+        [showBorder]="getFormValueBoolean('showBorder')" className="hero-title">
+        {{ heroText }}
+      </ngw-gradient-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'text-type') {
+    <div class="hero-text-container">
+      <ngw-text-type [text]="[heroText, heroSubtext]" tag="h1" [typingSpeed]="getFormValueNumber('typingSpeed')"
+        [pauseDuration]="getFormValueNumber('pauseDuration')" [loop]="getFormValueBoolean('loop')"
+        className="hero-title" [showCursor]="getFormValueBoolean('showCursor')"></ngw-text-type>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'count-up') {
+    <div class="hero-text-container">
+      <h1 class="hero-title">
+        <ngw-count-up [to]="getFormValueNumber('to')" [from]="getFormValueNumber('from')"
+          [duration]="getFormValueNumber('duration')" [delay]="getFormValueNumber('delay')"
+          className="hero-title-number"></ngw-count-up>
+        <span> Components</span>
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'fade-content') {
+    <ngw-fade-content [blur]="getFormValueBoolean('blur')" [duration]="getFormValueNumber('duration')"
+      [delay]="getFormValueNumber('delay')" [threshold]="getFormValueNumber('threshold')"
+      className="hero-text-container">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </ngw-fade-content>
+    } @else if (selectedEffect() === 'animated-content') {
+    <ngw-animated-content [distance]="getFormValueNumber('distance')" [direction]="getFormValueAnimatedDirection()"
+      [duration]="getFormValueNumber('duration')" [threshold]="getFormValueNumber('threshold')"
+      className="hero-text-container">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </ngw-animated-content>
+    } @else if (selectedEffect() === 'shiny-text') {
+    <div class="hero-text-container">
+      <ngw-shiny-text [text]="heroText" [speed]="getFormValueNumber('speed')" className="hero-title"></ngw-shiny-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'scroll-reveal') {
+    <div class="hero-text-container">
+      <ngw-scroll-reveal [text]="heroText + ' ' + heroSubtext" [enableBlur]="getFormValueBoolean('enableBlur')"
+        className="hero-title"></ngw-scroll-reveal>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'electric-border') {
+    <div class="hero-text-container">
+      <ngw-electric-border [color]="getFormValueString('color')" [speed]="getFormValueNumber('speed')"
+        [chaos]="getFormValueNumber('chaos')" [thickness]="getFormValueNumber('thickness')"
+        [style]="{ padding: '2rem', borderRadius: '12px' }">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </ngw-electric-border>
+    </div>
+    } @else if (selectedEffect() === 'glare-hover') {
+    <div class="hero-text-container">
+      <ngw-glare-hover [width]="getFormValueString('width')" [height]="getFormValueString('height')"
+        [background]="getFormValueString('background')" [borderRadius]="getFormValueString('borderRadius')"
+        [borderColor]="getFormValueString('borderColor')" [glareColor]="getFormValueString('glareColor')"
+        [glareOpacity]="getFormValueNumber('glareOpacity')" [glareAngle]="getFormValueNumber('glareAngle')"
+        [glareSize]="getFormValueNumber('glareSize')" [transitionDuration]="getFormValueNumber('transitionDuration')"
+        [playOnce]="getFormValueBoolean('playOnce')" [style]="{ padding: '3rem', borderRadius: '1.5rem' }">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </ngw-glare-hover>
+    </div>
+    } @else if (selectedEffect() === 'magnet') {
+    <div class="hero-text-container">
+      <ngw-magnet [magnetStrength]="getFormValueNumber('magnetStrength')" [padding]="getFormValueNumber('padding')">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+      </ngw-magnet>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'rotating-text') {
+    <div class="hero-text-container">
+      <ngw-rotating-text [texts]="[heroText, heroSubtext, '130+ Components']"
+        [rotationInterval]="getFormValueNumber('rotationInterval')" [auto]="getFormValueBoolean('auto')"
+        [loop]="getFormValueBoolean('loop')" [staggerDuration]="getFormValueNumber('staggerDuration')"
+        className="hero-title"></ngw-rotating-text>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'glitch-text') {
+    <div class="hero-text-container">
+      <ngw-glitch-text [speed]="getFormValueNumber('speed')" [enableShadows]="getFormValueBoolean('enableShadows')"
+        [enableOnHover]="getFormValueBoolean('enableOnHover')" className="hero-title">
+        {{ heroText }}
+      </ngw-glitch-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'click-spark') {
+    <ngw-click-spark [sparkColor]="getFormValueString('sparkColor')" [sparkCount]="getFormValueNumber('sparkCount')"
+      [sparkRadius]="getFormValueNumber('sparkRadius')">
+      <div class="hero-text-container">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </div>
+    </ngw-click-spark>
+    } @else if (selectedEffect() === 'crosshair') {
+    <div class="hero-text-container" style="position: relative;">
+      <ngw-crosshair [color]="getFormValueString('color')"></ngw-crosshair>
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'blob-cursor') {
+    <div class="hero-text-container" style="position: relative;">
+      <ngw-blob-cursor [blobType]="getFormValueBlobType()" [fillColor]="getFormValueString('fillColor')"
+        [trailCount]="getFormValueNumber('trailCount')" [sizes]="[60, 125, 75]" [innerSizes]="[20, 35, 25]"
+        [innerColor]="'rgba(255,255,255,0.8)'"></ngw-blob-cursor>
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'circular-text') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <ngw-circular-text [text]="heroText + ' ' + heroSubtext" [spinDuration]="getFormValueNumber('spinDuration')"
+        [onHover]="getFormValueOnHover()" className="hero-title"></ngw-circular-text>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'bounce-cards') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <ngw-bounce-cards [images]="['/hero1.png', '/hero2.png', '/hero3.png', '/hero4.png', '/hero5.png']"
+        [containerWidth]="getFormValueNumber('containerWidth')"
+        [containerHeight]="getFormValueNumber('containerHeight')"></ngw-bounce-cards>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'spotlight-card') {
+    <div class="hero-text-container">
+      <ngw-spotlight-card [spotlightColor]="getFormValueString('spotlightColor')"
+        style="padding: 3rem; border-radius: 1.5rem;">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </ngw-spotlight-card>
+    </div>
+    } @else if (selectedEffect() === 'text-cursor') {
+    <div class="hero-text-container" style="position: relative;">
+      <ngw-text-cursor [text]="getFormValueString('text')" [spacing]="getFormValueNumber('spacing')"
+        [maxPoints]="getFormValueNumber('maxPoints')"></ngw-text-cursor>
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'noise') {
+    <div class="hero-text-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;">
+      <ngw-noise [patternAlpha]="getFormValueNumber('patternAlpha')"
+        [patternRefreshInterval]="getFormValueNumber('patternRefreshInterval')"></ngw-noise>
+      <div
+        style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'curved-loop') {
+    <div class="hero-text-container" style="width: 100%;">
+      <ngw-curved-loop [marqueeText]="heroText + ' ' + heroSubtext" [speed]="getFormValueNumber('speed')"
+        [curveAmount]="getFormValueNumber('curveAmount')" [interactive]="getFormValueBoolean('interactive')"
+        className="hero-title"></ngw-curved-loop>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'star-border') {
+    <div class="hero-text-container">
+      <ngw-star-border tag="div" [color]="getFormValueString('color')" [speed]="getFormValueString('speed')"
+        [thickness]="getFormValueNumber('thickness')" [style]="{ padding: '2rem' }">
+        <h1 class="hero-title">
+          <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+          {{ heroText }}
+        </h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+        <div class="hero-features">
+          @for (feature of heroFeatures; track feature) {
+          <span class="hero-feature-badge">{{ feature }}</span>
+          }
+        </div>
+      </ngw-star-border>
+    </div>
+    } @else if (selectedEffect() === 'target-cursor') {
+    <div class="hero-text-container">
+      <h1 class="hero-title cursor-target">{{ heroText }}</h1>
+      <h2 class="hero-subtitle cursor-target">{{ heroSubtext }}</h2>
+      <p class="hero-description cursor-target">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge cursor-target">{{ feature }}</span>
+        }
+      </div>
+      <ngw-target-cursor [targetSelector]="'.cursor-target'"></ngw-target-cursor>
+    </div>
+    } @else if (selectedEffect() === 'fuzzy-text') {
+    <div class="hero-text-container">
+      <ngw-fuzzy-text [fontSize]="'clamp(3rem, 8vw, 6rem)'" [fontWeight]="800" [color]="'#ffffff'"
+        [enableHover]="getFormValueBoolean('enableHover')" [baseIntensity]="getFormValueNumber('baseIntensity')"
+        [hoverIntensity]="getFormValueNumber('hoverIntensity')">
+        {{ heroText }}
+      </ngw-fuzzy-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'scrambled-text') {
+    <div class="hero-text-container">
+      <ngw-scrambled-text [radius]="getFormValueNumber('radius')" [duration]="getFormValueNumber('duration')"
+        [speed]="getFormValueNumber('speed')" [scrambleChars]="'.:'" className="hero-title">
+        {{ heroText }} {{ heroSubtext }}
+      </ngw-scrambled-text>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'falling-text') {
+    <div class="hero-text-container" style="min-height: 400px; padding: 2rem;">
+      <ngw-falling-text [text]="heroText + ' ' + heroSubtext" [trigger]="getFormValueTrigger()"
+        [gravity]="getFormValueNumber('gravity')" [fontSize]="'clamp(2rem, 5vw, 4rem)'"
+        [highlightWords]="['NG', 'Wave']" className="hero-title"> </ngw-falling-text>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'shuffle') {
+    <div class="hero-text-container">
+      <ngw-shuffle [text]="heroText" [tag]="'h1'" [textAlign]="'center'"
+        [shuffleDirection]="getFormValueShuffleDirection()" [duration]="getFormValueNumber('duration')"
+        [stagger]="getFormValueNumber('stagger')" className="hero-title"></ngw-shuffle>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'ghost-cursor') {
+    <div class="hero-text-container" style="position: relative;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+      <ngw-ghost-cursor [trailLength]="getFormValueNumber('trailLength')" [inertia]="getFormValueNumber('inertia')"
+        [grainIntensity]="getFormValueNumber('grainIntensity')" [bloomStrength]="getFormValueNumber('bloomStrength')"
+        [color]="getFormValueString('color')" [brightness]="getFormValueNumber('brightness')"></ngw-ghost-cursor>
+    </div>
+    } @else if (selectedEffect() === 'decrypted-text') {
+    <div class="hero-text-container">
+      <ngw-decrypted-text [text]="heroText" [speed]="getFormValueNumber('speed')"
+        [maxIterations]="getFormValueNumber('maxIterations')" [sequential]="getFormValueBoolean('sequential')"
+        [revealDirection]="getFormValueRevealDirection()" className="hero-title"></ngw-decrypted-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'scroll-float') {
+    <div class="hero-text-container">
+      <ngw-scroll-float [text]="heroText" [animationDuration]="getFormValueNumber('animationDuration')"
+        [ease]="'back.inOut(2)'" [stagger]="getFormValueNumber('stagger')"
+        containerClassName="hero-title"></ngw-scroll-float>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'cubes') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <ngw-cubes [gridSize]="getFormValueNumber('gridSize')" [maxAngle]="getFormValueNumber('maxAngle')"
+        [radius]="getFormValueNumber('radius')" [autoAnimate]="getFormValueBoolean('autoAnimate')"
+        [rippleOnClick]="getFormValueBoolean('rippleOnClick')"></ngw-cubes>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'scroll-velocity') {
+    <div class="hero-text-container">
+      <ngw-scroll-velocity [texts]="[heroText, heroSubtext]" [velocity]="getFormValueNumber('velocity')"
+        [damping]="getFormValueNumber('damping')" [stiffness]="getFormValueNumber('stiffness')"
+        [numCopies]="getFormValueNumber('numCopies')"></ngw-scroll-velocity>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'gradual-blur') {
+    <div class="hero-text-container" style="position: relative;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+      <ngw-gradual-blur [position]="getFormValuePosition()" [strength]="getFormValueNumber('strength')"
+        [height]="getFormValueString('height')" [divCount]="getFormValueNumber('divCount')"
+        [exponential]="getFormValueBoolean('exponential')"></ngw-gradual-blur>
+    </div>
+    } @else if (selectedEffect() === 'magnet-lines') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <ngw-magnet-lines [rows]="getFormValueNumber('rows')" [columns]="getFormValueNumber('columns')"
+        [baseAngle]="getFormValueNumber('baseAngle')" [lineColor]="getFormValueString('lineColor')"
+        [containerSize]="'60vmin'"></ngw-magnet-lines>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'image-trail') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; height: 400px; position: relative;">
+        <ngw-image-trail [items]="['/logo.png', '/logo.png', '/logo.png']"
+          [variant]="getFormValueNumber('variant')"></ngw-image-trail>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'pixel-transition') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <ngw-pixel-transition [gridSize]="getFormValueNumber('gridSize')" [pixelColor]="getFormValueString('pixelColor')"
+        [animationStepDuration]="getFormValueNumber('animationStepDuration')" [once]="getFormValueBoolean('once')">
+        <div slot="first" style="padding: 2rem; background: #222; border-radius: 15px;">
+          <h3 style="color: white;">First Content</h3>
+        </div>
+        <div slot="second" style="padding: 2rem; background: #444; border-radius: 15px;">
+          <h3 style="color: white;">Second Content</h3>
+        </div>
+      </ngw-pixel-transition>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'logo-loop') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; max-width: 800px;">
+        <ngw-logo-loop
+          [logos]="[{src: '/hero1.png', alt: 'Logo 1'}, {src: '/hero2.png', alt: 'Logo 2'}, {src: '/hero3.png', alt: 'Logo 3'}, {src: '/hero4.png', alt: 'Logo 4'}, {src: '/hero5.png', alt: 'Logo 5'}]"
+          [speed]="getFormValueNumber('speed')" [direction]="getFormValueLogoLoopDirection()"
+          [logoHeight]="getFormValueNumber('logoHeight')" [gap]="getFormValueNumber('gap')"
+          [pauseOnHover]="getFormValueBoolean('pauseOnHover')" [fadeOut]="getFormValueBoolean('fadeOut')"
+          [scaleOnHover]="getFormValueBoolean('scaleOnHover')"></ngw-logo-loop>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'sticker-peel') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div
+        style="width: 100%; height: 400px; position: relative; display: flex; align-items: center; justify-content: center;">
+        <ngw-sticker-peel [imageSrc]="'/logo.png'" [rotate]="getFormValueNumber('rotate')"
+          [peelBackHoverPct]="getFormValueNumber('peelBackHoverPct')"
+          [peelBackActivePct]="getFormValueNumber('peelBackActivePct')" [width]="getFormValueNumber('width')"
+          [shadowIntensity]="getFormValueNumber('shadowIntensity')"
+          [lightingIntensity]="getFormValueNumber('lightingIntensity')"></ngw-sticker-peel>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'shape-blur') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; height: 400px; position: relative;">
+        <ngw-shape-blur [variation]="getFormValueNumber('variation')" [shapeSize]="getFormValueNumber('shapeSize')"
+          [roundness]="getFormValueNumber('roundness')" [borderSize]="getFormValueNumber('borderSize')"
+          [circleSize]="getFormValueNumber('circleSize')"
+          [circleEdge]="getFormValueNumber('circleEdge')"></ngw-shape-blur>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'pixel-trail') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; height: 400px; position: relative;">
+        <ngw-pixel-trail [gridSize]="getFormValueNumber('gridSize')" [trailSize]="getFormValueNumber('trailSize')"
+          [maxAge]="getFormValueNumber('maxAge')" [color]="getFormValueString('color')"></ngw-pixel-trail>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'laser-flow') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div
+        style="width: 100%; height: 400px; position: relative; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+        <ngw-laser-flow></ngw-laser-flow>
+        <p style="position: absolute; color: #666; z-index: 1;">Laser Flow (Placeholder)</p>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'ribbons') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; height: 400px; position: relative;">
+        <ngw-ribbons [colors]="['#FC8EAC']" [baseSpring]="getFormValueNumber('baseSpring')"
+          [baseFriction]="getFormValueNumber('baseFriction')" [baseThickness]="getFormValueNumber('baseThickness')"
+          [pointCount]="getFormValueNumber('pointCount')" [speedMultiplier]="getFormValueNumber('speedMultiplier')"
+          [enableFade]="getFormValueBoolean('enableFade')"></ngw-ribbons>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'meta-balls') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div
+        style="width: 100%; height: 400px; position: relative; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+        <ngw-meta-balls [color]="getFormValueString('color')" [speed]="getFormValueNumber('speed')"
+          [animationSize]="getFormValueNumber('animationSize')" [ballCount]="getFormValueNumber('ballCount')"
+          [cursorBallSize]="getFormValueNumber('cursorBallSize')"
+          [enableTransparency]="getFormValueBoolean('enableTransparency')"></ngw-meta-balls>
+        <p style="position: absolute; color: #666; z-index: 1;">Meta Balls (Placeholder)</p>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'metallic-paint') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div
+        style="width: 100%; height: 400px; position: relative; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+        <ngw-metallic-paint [patternScale]="getFormValueNumber('patternScale')"
+          [refraction]="getFormValueNumber('refraction')" [liquid]="getFormValueNumber('liquid')"
+          [speed]="getFormValueNumber('speed')">
+          <div style="padding: 2rem; color: white; z-index: 1; position: relative;">Metallic Paint Effect</div>
+        </ngw-metallic-paint>
+        <p style="position: absolute; color: #666; z-index: 1; bottom: 10px;">Metallic Paint (Placeholder)</p>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'splash-cursor') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; height: 400px; position: relative;">
+        <ngw-splash-cursor [simResolution]="getFormValueNumber('simResolution')"
+          [densityDissipation]="getFormValueNumber('densityDissipation')"
+          [velocityDissipation]="getFormValueNumber('velocityDissipation')"
+          [splatRadius]="getFormValueNumber('splatRadius')"
+          [splatForce]="getFormValueNumber('splatForce')"></ngw-splash-cursor>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'true-focus') {
+    <div class="hero-text-container">
+      <ngw-true-focus [sentence]="heroText + ' ' + heroSubtext" [separator]="' '" [manualMode]="false"
+        [blurAmount]="getFormValueNumber('blurAmount')" [borderColor]="getFormValueString('borderColor')"
+        [glowColor]="getFormValueString('glowColor')"
+        [animationDuration]="getFormValueNumber('animationDuration')"></ngw-true-focus>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'variable-proximity') {
+    <div class="hero-text-container">
+      <ngw-variable-proximity [label]="heroText + ' ' + heroSubtext" fromFontVariationSettings="'wght' 100"
+        toFontVariationSettings="'wght' 900" [radius]="getFormValueNumber('radius')"
+        [falloff]="getFormValueFalloff()"></ngw-variable-proximity>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'split-text') {
+    <div class="hero-text-container">
+      <ngw-split-text [text]="heroText" [tag]="getFormValueTag()" [splitType]="getFormValueSplitType()"
+        [delay]="getFormValueNumber('delay')" [duration]="getFormValueNumber('duration')"
+        className="hero-title"></ngw-split-text>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'text-pressure') {
+    <div class="hero-text-container" style="height: 200px;">
+      <ngw-text-pressure [text]="heroText" [textColor]="getFormValueString('textColor')"
+        [minFontSize]="getFormValueNumber('minFontSize')"></ngw-text-pressure>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'ascii-text') {
+    <div class="hero-text-container" [style.height.px]="asciiContainerHeight()"
+      style="position: relative; width: 100%;">
+      <ngw-ascii-text [text]="heroText" [asciiFontSize]="asciiFontSize()" [textFontSize]="asciiTextFontSize()"
+        [textColor]="asciiTextColor()" [gradient]="asciiGradient()" [enableWaves]="asciiEnableWaves()"></ngw-ascii-text>
+      <p class="hero-description" style="position: relative; z-index: 10; margin-top: 2rem;">{{ heroDescription }}
+      </p>
+      <div class="hero-features" style="position: relative; z-index: 10;">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else if (selectedEffect() === 'tilted-card') {
+    <div class="hero-text-container">
+      <ngw-tilted-card [imageSrc]="'/hero1.png'" [altText]="'NG Wave Hero Image'">
+        <h1 class="hero-title">{{ heroText }}</h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+      </ngw-tilted-card>
+    </div>
+    } @else if (selectedEffect() === 'decay-card') {
+    <div class="hero-text-container">
+      <ngw-decay-card>
+        <h1 class="hero-title">{{ heroText }}</h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+        <p class="hero-description">{{ heroDescription }}</p>
+      </ngw-decay-card>
+    </div>
+    } @else if (selectedEffect() === 'stepper') {
+    <div class="hero-text-container">
+      <ngw-stepper>
+        <ngw-step>
+          <h1 class="hero-title">{{ heroText }}</h1>
+          <p class="hero-description">{{ heroDescription }}</p>
+        </ngw-step>
+        <ngw-step>
+          <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+          <p class="hero-description">Step 2 content</p>
+        </ngw-step>
+        <ngw-step>
+          <p class="hero-description">Step 3 content</p>
+        </ngw-step>
+      </ngw-stepper>
+    </div>
+    } @else if (selectedEffect() === 'pixel-card') {
+    <div class="hero-text-container">
+      <ngw-pixel-card>
+        <h1 class="hero-title">{{ heroText }}</h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      </ngw-pixel-card>
+    </div>
+    } @else if (selectedEffect() === 'stack') {
+    <div class="hero-text-container">
+      <ngw-stack></ngw-stack>
+    </div>
+    } @else if (selectedEffect() === 'card-swap') {
+    <div class="hero-text-container">
+      <ngw-card-swap>
+        <ngw-card>Card 1</ngw-card>
+        <ngw-card>Card 2</ngw-card>
+        <ngw-card>Card 3</ngw-card>
+      </ngw-card-swap>
+    </div>
+    } @else if (selectedEffect() === 'carousel') {
+    <div class="hero-text-container">
+      <ngw-carousel
+        [items]="[{title: 'Slide 1', description: 'Description 1', id: 1}, {title: 'Slide 2', description: 'Description 2', id: 2}, {title: 'Slide 3', description: 'Description 3', id: 3}]"></ngw-carousel>
+    </div>
+    } @else if (selectedEffect() === 'bubble-menu') {
+    <div class="hero-text-container">
+      <ngw-bubble-menu
+        [items]="[{label: 'Home', href: '#'}, {label: 'About', href: '#'}, {label: 'Contact', href: '#'}]"></ngw-bubble-menu>
+    </div>
+    } @else if (selectedEffect() === 'card-nav') {
+    <div class="hero-text-container">
+      <ngw-card-nav logo="/logo.png"
+        [items]="[{label: 'Category 1', bgColor: '#fff', textColor: '#000', links: [{label: 'Link 1', href: '#'}]}]"></ngw-card-nav>
+    </div>
+    } @else if (selectedEffect() === 'gooey-nav') {
+    <div class="hero-text-container">
+      <ngw-gooey-nav [items]="[{label: 'Home', href: '#'}, {label: 'About', href: '#'}]"></ngw-gooey-nav>
+    </div>
+    } @else if (selectedEffect() === 'staggered-menu') {
+    <div class="hero-text-container">
+      <ngw-staggered-menu [items]="[{label: 'Home', link: '#'}, {label: 'About', link: '#'}]"></ngw-staggered-menu>
+    </div>
+    } @else if (selectedEffect() === 'flowing-menu') {
+    <div class="hero-text-container">
+      <ngw-flowing-menu
+        [items]="[{link: '#', text: 'Home', image: '/hero1.png'}, {link: '#', text: 'About', image: '/hero2.png'}]"></ngw-flowing-menu>
+    </div>
+    } @else if (selectedEffect() === 'folder') {
+    <div class="hero-text-container">
+      <ngw-folder [items]="[1, 2, 3]"></ngw-folder>
+    </div>
+    } @else if (selectedEffect() === 'glass-surface') {
+    <div class="hero-text-container">
+      <ngw-glass-surface>
+        <h1 class="hero-title">{{ heroText }}</h1>
+        <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      </ngw-glass-surface>
+    </div>
+    } @else if (selectedEffect() === 'glass-icons') {
+    <div class="hero-text-container">
+      <ngw-glass-icons
+        [items]="[{label: 'Icon 1', icon: '🔷', color: 'blue'}, {label: 'Icon 2', icon: '🔶', color: 'purple'}]"></ngw-glass-icons>
+    </div>
+    } @else if (selectedEffect() === 'chroma-grid') {
+    <div class="hero-text-container">
+      <ngw-chroma-grid [items]="[
+        {image: '/hero1.png', title: 'Hero 1', subtitle: 'Subtitle 1'},
+        {image: '/hero2.png', title: 'Hero 2', subtitle: 'Subtitle 2'},
+        {image: '/hero3.png', title: 'Hero 3', subtitle: 'Subtitle 3'},
+        {image: '/hero4.png', title: 'Hero 4', subtitle: 'Subtitle 4'},
+        {image: '/hero5.png', title: 'Hero 5', subtitle: 'Subtitle 5'},
+        {image: '/hero6.png', title: 'Hero 6', subtitle: 'Subtitle 6'}
+      ]"></ngw-chroma-grid>
+    </div>
+    } @else if (selectedEffect() === 'dock') {
+    <div class="hero-text-container">
+      <ngw-dock [items]="[{icon: '🔷', label: 'App 1'}, {icon: '🔶', label: 'App 2'}]"></ngw-dock>
+    </div>
+    } @else if (selectedEffect() === 'elastic-slider') {
+    <div class="hero-text-container">
+      <ngw-elastic-slider [leftIcon]="'🔉'" [rightIcon]="'🔊'"></ngw-elastic-slider>
+    </div>
+    } @else if (selectedEffect() === 'circular-gallery') {
+    <div class="background-effect">
+      <ngw-circular-gallery [bend]="getFormValueNumber('bend')" [borderRadius]="getFormValueNumber('borderRadius')"
+        [scrollSpeed]="getFormValueNumber('scrollSpeed')" [scrollEase]="getFormValueNumber('scrollEase')"
+        [textColor]="getFormValueString('textColor')"></ngw-circular-gallery>
+    </div>
+    } @else if (selectedEffect() === 'dome-gallery') {
+    <div class="background-effect">
+      <ngw-dome-gallery [fit]="getFormValueNumber('fit')" [minRadius]="getFormValueNumber('minRadius')"
+        [maxVerticalRotationDeg]="getFormValueNumber('maxVerticalRotationDeg')"
+        [segments]="getFormValueNumber('segments')" [dragDampening]="getFormValueNumber('dragDampening')"
+        [grayscale]="getFormValueBoolean('grayscale')"></ngw-dome-gallery>
+    </div>
+    } @else if (selectedEffect() === 'flying-posters') {
+    <div class="background-effect">
+      <ngw-flying-posters
+        [items]="['https://picsum.photos/800/600?random=1', 'https://picsum.photos/800/600?random=2', 'https://picsum.photos/800/600?random=3', 'https://picsum.photos/800/600?random=4', 'https://picsum.photos/800/600?random=5']"
+        [planeWidth]="getFormValueNumber('planeWidth')" [planeHeight]="getFormValueNumber('planeHeight')"
+        [distortion]="getFormValueNumber('distortion')" [scrollEase]="getFormValueNumber('scrollEase')"
+        [cameraFov]="getFormValueNumber('cameraFov')" [cameraZ]="getFormValueNumber('cameraZ')"></ngw-flying-posters>
+    </div>
+    } @else if (selectedEffect() === 'infinite-menu') {
+    <div class="background-effect">
+      <ngw-infinite-menu [items]="[
+          { image: 'https://picsum.photos/900/900?random=1', link: '#', title: 'Item 1', description: 'Description 1' },
+          { image: 'https://picsum.photos/900/900?random=2', link: '#', title: 'Item 2', description: 'Description 2' },
+          { image: 'https://picsum.photos/900/900?random=3', link: '#', title: 'Item 3', description: 'Description 3' }
+        ]"></ngw-infinite-menu>
+    </div>
+    } @else if (selectedEffect() === 'pill-nav') {
+    <div class="background-effect">
+      <ngw-pill-nav [logo]="'/logo.png'" [items]="[
+          { href: '#', label: 'Home' },
+          { href: '#', label: 'About' },
+          { href: '#', label: 'Services' },
+          { href: '#', label: 'Contact' }
+        ]" [baseColor]="getFormValueString('baseColor')" [pillColor]="getFormValueString('pillColor')"
+        [hoveredPillTextColor]="getFormValueString('hoveredPillTextColor')"
+        [pillTextColor]="getFormValueString('pillTextColor')" [ease]="getFormValueString('ease')"
+        [initialLoadAnimation]="getFormValueBoolean('initialLoadAnimation')"></ngw-pill-nav>
+    </div>
+    } @else if (selectedEffect() === 'magic-bento') {
+    <div class="background-effect">
+      <ngw-magic-bento [textAutoHide]="getFormValueBoolean('textAutoHide')"
+        [enableStars]="getFormValueBoolean('enableStars')" [enableSpotlight]="getFormValueBoolean('enableSpotlight')"
+        [enableBorderGlow]="getFormValueBoolean('enableBorderGlow')"
+        [spotlightRadius]="getFormValueNumber('spotlightRadius')" [particleCount]="getFormValueNumber('particleCount')"
+        [glowColor]="getFormValueString('glowColor')"></ngw-magic-bento>
+    </div>
+    } @else if (selectedEffect() === 'masonry') {
+    <div class="background-effect">
+      <ngw-masonry [items]="[
+          { id: '1', img: 'https://picsum.photos/400/600?random=1', url: '#', height: 600 },
+          { id: '2', img: 'https://picsum.photos/400/800?random=2', url: '#', height: 800 },
+          { id: '3', img: 'https://picsum.photos/400/500?random=3', url: '#', height: 500 },
+          { id: '4', img: 'https://picsum.photos/400/700?random=4', url: '#', height: 700 },
+          { id: '5', img: 'https://picsum.photos/400/550?random=5', url: '#', height: 550 },
+          { id: '6', img: 'https://picsum.photos/400/650?random=6', url: '#', height: 650 }
+        ]" [ease]="getFormValueString('ease')" [duration]="getFormValueNumber('duration')"
+        [stagger]="getFormValueNumber('stagger')" [animateFrom]="getFormValueString('animateFrom')"
+        [scaleOnHover]="getFormValueBoolean('scaleOnHover')" [hoverScale]="getFormValueNumber('hoverScale')"
+        [blurToFocus]="getFormValueBoolean('blurToFocus')"
+        [colorShiftOnHover]="getFormValueBoolean('colorShiftOnHover')"></ngw-masonry>
+    </div>
+    } @else if (selectedEffect() === 'profile-card') {
+    <div class="background-effect">
+      <ngw-profile-card [name]="getFormValueString('name')" [title]="getFormValueString('title')"
+        [handle]="getFormValueString('handle')" [status]="getFormValueString('status')"
+        [enableTilt]="getFormValueBoolean('enableTilt')" [enableMobileTilt]="getFormValueBoolean('enableMobileTilt')"
+        [behindGlowEnabled]="getFormValueBoolean('behindGlowEnabled')"
+        avatarUrl="https://picsum.photos/400/400?random=1"></ngw-profile-card>
+    </div>
+    } @else if (selectedEffect() === 'scroll-stack') {
+    <div class="background-effect">
+      <ngw-scroll-stack [itemDistance]="getFormValueNumber('itemDistance')"
+        [itemScale]="getFormValueNumber('itemScale')" [itemStackDistance]="getFormValueNumber('itemStackDistance')"
+        [baseScale]="getFormValueNumber('baseScale')" [rotationAmount]="getFormValueNumber('rotationAmount')"
+        [blurAmount]="getFormValueNumber('blurAmount')">
+        <ngw-scroll-stack-item>
+          <div
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 20px; color: white;">
+            Card 1
+          </div>
+        </ngw-scroll-stack-item>
+        <ngw-scroll-stack-item>
+          <div
+            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 2rem; border-radius: 20px; color: white;">
+            Card 2
+          </div>
+        </ngw-scroll-stack-item>
+        <ngw-scroll-stack-item>
+          <div
+            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 2rem; border-radius: 20px; color: white;">
+            Card 3
+          </div>
+        </ngw-scroll-stack-item>
+      </ngw-scroll-stack>
+    </div>
+    } @else if (selectedEffect() === 'lanyard') {
+    <div class="background-effect">
+      <ngw-lanyard [fov]="getFormValueNumber('fov')" [transparent]="getFormValueBoolean('transparent')"></ngw-lanyard>
+    </div>
+    } @else if (selectedEffect() === 'model-viewer') {
+    <div class="background-effect">
+      <ngw-model-viewer [url]="'https://threejs.org/examples/models/gltf/Duck/glTF-Binary/Duck.glb'"
+        [width]="getFormValueNumber('width')" [height]="getFormValueNumber('height')"
+        [defaultRotationX]="getFormValueNumber('defaultRotationX')"
+        [defaultRotationY]="getFormValueNumber('defaultRotationY')" [defaultZoom]="getFormValueNumber('defaultZoom')"
+        [enableMouseParallax]="getFormValueBoolean('enableMouseParallax')"
+        [enableManualRotation]="getFormValueBoolean('enableManualRotation')"
+        [enableHoverRotation]="getFormValueBoolean('enableHoverRotation')"
+        [autoRotate]="getFormValueBoolean('autoRotate')"
+        [autoRotateSpeed]="getFormValueNumber('autoRotateSpeed')"></ngw-model-viewer>
+    </div>
+    } @else if (selectedEffect() === 'animated-list') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <div style="width: 100%; max-width: 600px; height: 400px;">
+        <ngw-animated-list
+          [items]="heroFeatures.concat(['Fully Typed', 'SSR Compatible', 'Standalone Architecture', '130+ Components', 'Angular Signals', 'GSAP Animations', 'Three.js Integration'])"
+          [showGradients]="getFormValueBoolean('showGradients')"
+          [enableArrowNavigation]="getFormValueBoolean('enableArrowNavigation')"
+          [displayScrollbar]="getFormValueBoolean('displayScrollbar')"></ngw-animated-list>
+      </div>
+      <p class="hero-description">{{ heroDescription }}</p>
+    </div>
+    } @else if (selectedEffect() === 'counter') {
+    <div class="hero-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <ngw-counter [value]="getFormValueNumber('value')" [fontSize]="getFormValueNumber('fontSize')"
+        [gap]="getFormValueNumber('gap')" [borderRadius]="getFormValueNumber('borderRadius')"
+        [textColor]="getFormValueString('textColor')"
+        [gradientHeight]="getFormValueNumber('gradientHeight')"></ngw-counter>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    } @else {
+    <div class="hero-text-container">
+      <h1 class="hero-title">
+        <img src="/logo.png" alt="NG Wave Logo" class="title-logo" />
+        {{ heroText }}
+      </h1>
+      <h2 class="hero-subtitle">{{ heroSubtext }}</h2>
+      <p class="hero-description">{{ heroDescription }}</p>
+      <div class="hero-features">
+        @for (feature of heroFeatures; track feature) {
+        <span class="hero-feature-badge">{{ feature }}</span>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Side Navigation -->
+  <nav class="side-nav">
+    <h3 class="nav-title">Components</h3>
+    @for (category of getCategories(); track category) {
+    <div class="nav-category">
+      <button class="category-header" (click)="toggleCategory(category)"
+        [attr.aria-expanded]="isCategoryExpanded(category)">
+        <span class="category-name">{{ category }}</span>
+        <span class="category-icon" [class.expanded]="isCategoryExpanded(category)">▼</span>
+      </button>
+      @if (isCategoryExpanded(category)) {
+      <ul class="category-list">
+        @for (effect of getEffectsByCategory(category); track effect.id) {
+        <li>
+          <button class="nav-item" [class.active]="isSelected(effect.id)" (click)="selectEffect(effect.id)">
+            {{ effect.name }}
+          </button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+    }
+  </nav>
+
+  <!-- Controls Panel -->
+  @if (showControls() && getFormControls().length > 0) {
+  <div class="controls-panel">
+    <h3 class="controls-title">Settings</h3>
+    <form [formGroup]="controlsForm" class="controls-form">
+      @for (control of getFormControls(); track control.key) {
+      @if (control.key.startsWith('customGradient') && selectedEffect() === 'ascii-text' &&
+      getFormValueString('gradientType') !== 'custom') {
+      <!-- Skip custom gradient colors when not using custom gradient -->
+      } @else {
+      <div class="control-group">
+        <label [for]="control.key" class="control-label">{{ control.label }}</label>
+        @if (control.type === 'number') {
+        <div class="slider-container">
+          <input [id]="control.key" type="range" [formControlName]="control.key" [min]="control.min ?? 0"
+            [max]="control.max ?? 100" [step]="control.step ?? 1" class="control-slider" />
+          <span class="slider-value">{{ getFormValueNumber(control.key) }}</span>
+        </div>
+        } @else if (control.type === 'text') {
+        <input [id]="control.key" type="text" [formControlName]="control.key" class="control-input" />
+        } @else if (control.type === 'boolean') {
+        <label class="control-toggle">
+          <input [id]="control.key" type="checkbox" [formControlName]="control.key" class="control-checkbox" />
+          <span class="toggle-slider"></span>
+        </label>
+        } @else if (control.type === 'select') {
+        <select [id]="control.key" [formControlName]="control.key" class="control-select">
+          @for (option of control.options; track option) {
+          <option [value]="option">{{ option }}</option>
+          }
+        </select>
+        } @else if (control.type === 'color') {
+        <input [id]="control.key" type="color" [formControlName]="control.key" class="control-color" />
+        }
+      </div>
+      }
+      }
+    </form>
+  </div>
+  }
+</div>

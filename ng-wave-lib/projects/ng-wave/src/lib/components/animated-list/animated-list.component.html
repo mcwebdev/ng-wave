@@ -1,0 +1,35 @@
+<div [class]="'scroll-list-container ' + className" role="listbox" [attr.aria-label]="'List of ' + items.length + ' items'">
+  <div
+    #listRef
+    [class]="'scroll-list ' + (!displayScrollbar ? 'no-scrollbar' : '')"
+    (scroll)="onScroll($event)"
+    role="list"
+    tabindex="0"
+    [attr.aria-activedescendant]="selectedIndex() >= 0 ? 'item-' + selectedIndex() : null"
+  >
+    @for (item of items; track $index) {
+      <div
+        [id]="'item-' + $index"
+        [attr.data-index]="$index"
+        role="option"
+        [attr.aria-selected]="isSelected($index)"
+        (mouseenter)="onItemMouseEnter($index)"
+        (click)="onItemClick(item, $index)"
+        (keydown.enter)="onItemClick(item, $index); $event.preventDefault()"
+        (keydown.space)="onItemClick(item, $index); $event.preventDefault()"
+        style="margin-bottom: 1rem; cursor: pointer; transform: scale(0.7); opacity: 0;"
+        tabindex="-1"
+        [class.item-focused]="isSelected($index)"
+      >
+        <div [class]="'item ' + (isSelected($index) ? 'selected' : '') + ' ' + itemClassName">
+          <p class="item-text">{{ item }}</p>
+        </div>
+      </div>
+    }
+  </div>
+  @if (showGradients) {
+    <div class="top-gradient" [style.opacity]="getTopGradientOpacity()"></div>
+    <div class="bottom-gradient" [style.opacity]="getBottomGradientOpacity()"></div>
+  }
+</div>
+

@@ -1,0 +1,7 @@
+<div
+  [class]="'glare-hover ' + (playOnce ? 'glare-hover--play-once' : '') + ' ' + className"
+  [ngStyle]="mergedStyles()"
+>
+  <ng-content></ng-content>
+</div>
+

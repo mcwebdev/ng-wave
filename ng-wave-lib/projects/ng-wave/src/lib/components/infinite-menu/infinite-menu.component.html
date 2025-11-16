@@ -1,0 +1,19 @@
+<div style="position: relative; width: 100%; height: 100%">
+  <canvas id="infinite-grid-menu-canvas" #canvasRef [class]="className"></canvas>
+
+  @if (activeItemSignal()) {
+    <h2 [class]="'face-title ' + (isMovingSignal() ? 'inactive' : 'active')">{{ activeItemSignal()?.title }}</h2>
+
+    <p [class]="'face-description ' + (isMovingSignal() ? 'inactive' : 'active')">
+      {{ activeItemSignal()?.description }}
+    </p>
+
+    <div
+      (click)="handleButtonClick()"
+      [class]="'action-button ' + (isMovingSignal() ? 'inactive' : 'active')"
+    >
+      <p class="action-button-icon">&#x2197;</p>
+    </div>
+  }
+</div>
+

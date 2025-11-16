@@ -1,0 +1,13 @@
+<div
+  #container
+  [class]="'circular-text ' + className"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  @for (letter of letters(); track $index) {
+    <span [style.transform]="getLetterTransform($index)" [style.webkitTransform]="getLetterTransform($index)">
+      {{ letter }}
+    </span>
+  }
+</div>
+

@@ -1,0 +1,7 @@
+<div #containerRef [class]="getContainerClasses()" [ngStyle]="containerStyle()">
+    <div class="gradual-blur-inner">
+        @for (div of blurDivs(); track $index) {
+        <div [ngStyle]="div.style"></div>
+        }
+    </div>
+</div>

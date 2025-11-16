@@ -1,0 +1,38 @@
+<div #container
+  [class]="'glass-surface ' + (supportsSVGFilters() ? 'glass-surface--svg' : 'glass-surface--fallback') + ' ' + className"
+  [ngStyle]="getContainerStyle()">
+  <svg class="glass-surface__filter" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter [id]="filterId" colorInterpolationFilters="sRGB" x="0%" y="0%" width="100%" height="100%">
+        <feImage #feImage x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map"
+          [attr.href]="displacementMapUrl()" />
+
+        <feDisplacementMap #redChannel in="SourceGraphic" in2="map" id="redchannel" result="dispRed" />
+        <feColorMatrix in="dispRed" type="matrix" values="1 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0" result="red" />
+
+        <feDisplacementMap #greenChannel in="SourceGraphic" in2="map" id="greenchannel" result="dispGreen" />
+        <feColorMatrix in="dispGreen" type="matrix" values="0 0 0 0 0
+                  0 1 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0" result="green" />
+
+        <feDisplacementMap #blueChannel in="SourceGraphic" in2="map" id="bluechannel" result="dispBlue" />
+        <feColorMatrix in="dispBlue" type="matrix" values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 1 0 0
+                  0 0 0 1 0" result="blue" />
+
+        <feBlend in="red" in2="green" mode="screen" result="rg" />
+        <feBlend in="rg" in2="blue" mode="screen" result="output" />
+        <feGaussianBlur #gaussianBlur in="output" stdDeviation="0.7" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="glass-surface__content">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<nav [class]="containerClassName" aria-label="Main navigation">
+  <div class="bubble logo-bubble" aria-label="Logo" [style.background]="menuBg">
+    <span class="logo-content">
+      @if (logo) {
+        <img [src]="logo" alt="Logo" class="bubble-logo" />
+      }
+    </span>
+  </div>
+
+  <button
+    type="button"
+    class="bubble toggle-bubble menu-btn"
+    [class.open]="isMenuOpen()"
+    (click)="toggleMenu()"
+    [attr.aria-label]="menuAriaLabel"
+    [attr.aria-pressed]="isMenuOpen()"
+    [style.background]="menuBg"
+  >
+    <span class="menu-line" [style.background]="menuContentColor"></span>
+    <span class="menu-line short" [style.background]="menuContentColor"></span>
+  </button>
+</nav>
+
+@if (showOverlay()) {
+  <div
+    #overlay
+    class="bubble-menu-items"
+    [class.fixed]="useFixedPosition"
+    [class.absolute]="!useFixedPosition"
+    [attr.aria-hidden]="!isMenuOpen()"
+  >
+    <ul class="pill-list" role="menu" aria-label="Menu links">
+      @for (item of menuItems; track $index) {
+        <li role="none" class="pill-col">
+          <a
+            role="menuitem"
+            [href]="item.href"
+            [attr.aria-label]="item.ariaLabel || item.label"
+            class="pill-link"
+            [style.--item-rot]="(item.rotation ?? 0) + 'deg'"
+            [style.--pill-bg]="menuBg"
+            [style.--pill-color]="menuContentColor"
+            [style.--hover-bg]="item.hoverStyles?.bgColor || '#f3f4f6'"
+            [style.--hover-color]="item.hoverStyles?.textColor || menuContentColor"
+            #bubbleRef
+            (mouseenter)="registerBubbleRef(bubbleRef, $index)"
+          >
+            <span
+              class="pill-label"
+              #labelRef
+              (mouseenter)="registerLabelRef(labelRef, $index)"
+            >
+              {{ item.label }}
+            </span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+}
+

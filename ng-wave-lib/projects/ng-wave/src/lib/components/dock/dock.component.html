@@ -1,0 +1,37 @@
+<div
+  #outer
+  class="dock-outer"
+  [style.height.px]="panelHeight"
+  style="scrollbar-width: none"
+>
+  <div
+    #panel
+    class="dock-panel"
+    [class]="className"
+    [style.height.px]="panelHeight"
+    (mousemove)="handleMouseMove($event)"
+    (mouseleave)="handleMouseLeave()"
+    role="toolbar"
+    aria-label="Application dock"
+  >
+    @for (item of items; track $index) {
+      <div
+        class="dock-item"
+        [class]="item.className || ''"
+        [style.width.px]="baseItemSize"
+        [style.height.px]="baseItemSize"
+        (click)="handleItemClick(item, $index)"
+        (mouseenter)="handleMouseMove($event)"
+        #itemRef
+        tabindex="0"
+        role="button"
+        aria-haspopup="true"
+        [attr.data-index]="$index"
+      >
+        <div class="dock-icon" [innerHTML]="item.icon"></div>
+        <div class="dock-label" role="tooltip">{{ item.label }}</div>
+      </div>
+    }
+  </div>
+</div>
+

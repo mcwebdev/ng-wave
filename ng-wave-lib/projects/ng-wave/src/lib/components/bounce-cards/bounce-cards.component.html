@@ -1,0 +1,18 @@
+<div
+  #container
+  [class]="'bounceCardsContainer ' + className"
+  [style.width.px]="containerWidth"
+  [style.height.px]="containerHeight"
+>
+  @for (image of images; track $index) {
+    <div
+      [class]="'card card-' + $index"
+      [style.transform]="getCardTransform($index)"
+      (mouseenter)="onCardHover($index)"
+      (mouseleave)="onCardLeave()"
+    >
+      <img class="image" [src]="image" [alt]="'card-' + $index" />
+    </div>
+  }
+</div>
+

@@ -1,0 +1,10 @@
+<div
+  #content
+  [class]="className"
+  [style.opacity]="getStyle()['opacity']"
+  [style.transition]="getStyle()['transition']"
+  [style.filter]="getStyle()['filter']"
+>
+  <ng-content></ng-content>
+</div>
+

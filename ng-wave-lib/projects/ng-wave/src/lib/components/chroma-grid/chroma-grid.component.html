@@ -1,0 +1,40 @@
+<div
+  #root
+  class="chroma-grid"
+  [class]="className"
+  [style.--r]="radius + 'px'"
+  [style.--cols]="columns"
+  [style.--rows]="rows"
+  (pointermove)="handleMove($event)"
+  (pointerleave)="handleLeave()"
+>
+  @for (item of getDisplayItems(); track $index) {
+    <article
+      class="chroma-card"
+      (mousemove)="handleCardMove($event)"
+      (click)="handleCardClick(item.url)"
+      [style.--card-border]="item.borderColor || 'transparent'"
+      [style.--card-gradient]="item.gradient"
+      [style.cursor]="item.url ? 'pointer' : 'default'"
+    >
+      <div class="chroma-img-wrapper">
+        <img [src]="item.image" [alt]="item.title" loading="lazy" />
+      </div>
+      <footer class="chroma-info">
+        <h3 class="name">{{ item.title }}</h3>
+        @if (item.handle) {
+          <span class="handle">{{ item.handle }}</span>
+        }
+        @if (item.subtitle) {
+          <p class="role">{{ item.subtitle }}</p>
+        }
+        @if (item.location) {
+          <span class="location">{{ item.location }}</span>
+        }
+      </footer>
+    </article>
+  }
+  <div class="chroma-overlay"></div>
+  <div #fade class="chroma-fade"></div>
+</div>
+

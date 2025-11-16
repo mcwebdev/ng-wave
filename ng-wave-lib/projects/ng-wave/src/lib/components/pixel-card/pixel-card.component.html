@@ -1,0 +1,9 @@
+<div
+  #container
+  [class]="'pixel-card ' + className"
+  [tabIndex]="getTabIndex()"
+>
+  <canvas #canvas class="pixel-canvas"></canvas>
+  <ng-content></ng-content>
+</div>
+

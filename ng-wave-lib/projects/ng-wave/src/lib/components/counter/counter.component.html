@@ -1,0 +1,21 @@
+<div class="counter-container" [ngStyle]="containerStyle">
+  <div class="counter-counter" [ngStyle]="defaultCounterStyle()">
+    @for (place of places; track place) {
+      <div class="counter-digit" [ngStyle]="getDigitStyle()">
+        @for (number of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; track number) {
+          <span
+            class="counter-number"
+            [style.transform]="'translateY(' + getDigitValue(place, number) + 'px)'"
+          >
+            {{ number }}
+          </span>
+        }
+      </div>
+    }
+  </div>
+  <div class="gradient-container">
+    <div class="top-gradient" [ngStyle]="getTopGradientStyle()"></div>
+    <div class="bottom-gradient" [ngStyle]="getBottomGradientStyle()"></div>
+  </div>
+</div>
+

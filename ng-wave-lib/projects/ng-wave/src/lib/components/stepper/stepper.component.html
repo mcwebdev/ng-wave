@@ -1,0 +1,79 @@
+<div class="stepper-outer-container" role="region" aria-label="Stepper navigation">
+  <div class="stepper-circle-container" [class]="stepCircleContainerClassName" style="border: 1px solid #222">
+    <div class="stepper-indicator-row" [class]="stepContainerClassName" role="tablist" [attr.aria-label]="'Step ' + currentStep() + ' of ' + totalSteps()">
+      @for (step of stepComponents; track $index) {
+      @let stepNumber = $index + 1;
+      @let isNotLastStep = $index < totalSteps() - 1; @let status=getStepStatus(stepNumber); <ng-container>
+        <button
+          type="button"
+          class="stepper-indicator"
+          [attr.data-step-indicator]="stepNumber"
+          [class.cursor-pointer]="!disableStepIndicators && stepNumber !== currentStep()"
+          (click)="handleStepClick(stepNumber)"
+          [attr.aria-label]="'Go to step ' + stepNumber"
+          [attr.aria-current]="status === 'active' ? 'step' : null"
+          [disabled]="disableStepIndicators || stepNumber === currentStep()"
+        >
+          <div class="stepper-indicator-inner" [class.status-inactive]="status === 'inactive'"
+            [class.status-active]="status === 'active'" [class.status-complete]="status === 'complete'">
+            @if (status === 'complete') {
+            <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            } @else if (status === 'active') {
+            <div class="active-dot"></div>
+            } @else {
+            <span class="step-number">{{ stepNumber }}</span>
+            }
+          </div>
+        </button>
+
+        @if (isNotLastStep) {
+        <div class="stepper-connector" [attr.data-step-connector]="stepNumber">
+          <div class="stepper-connector-inner" [class.complete]="currentStep() > stepNumber"></div>
+        </div>
+        }
+        </ng-container>
+        }
+    </div>
+
+    <div #contentWrapper class="stepper-content-default" [class]="contentClassName"
+      style="position: relative; overflow: hidden">
+      <div #contentContainer class="stepper-content-inner" style="position: absolute; left: 0; right: 0; top: 0">
+        @if (!isCompleted()) {
+        @for (step of stepComponents; track $index) {
+        @if ($index === getCurrentStepIndex()) {
+        <ng-container [ngComponentOutlet]="getStepComponentClass(step)"></ng-container>
+        }
+        }
+        }
+      </div>
+    </div>
+
+    @if (!isCompleted()) {
+    <div class="stepper-footer-container" [class]="footerClassName">
+      <div class="stepper-footer-nav" [class.spread]="currentStep() !== 1" [class.end]="currentStep() === 1">
+        @if (currentStep() !== 1) {
+        <button
+          type="button"
+          class="stepper-back-button"
+          [class.inactive]="currentStep() === 1"
+          (click)="handleBack()"
+          [attr.aria-label]="'Go back to step ' + (currentStep() - 1)"
+        >
+          {{ backButtonText }}
+        </button>
+        }
+        <button
+          type="button"
+          class="stepper-next-button"
+          (click)="isLastStep() ? handleComplete() : handleNext()"
+          [attr.aria-label]="isLastStep() ? 'Complete stepper' : 'Go to next step'"
+        >
+          {{ isLastStep() ? 'Complete' : nextButtonText }}
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

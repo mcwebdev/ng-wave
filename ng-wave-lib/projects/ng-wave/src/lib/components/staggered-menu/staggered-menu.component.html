@@ -1,0 +1,82 @@
+<div
+  [class]="(className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : '')"
+  [style.--sm-accent]="accentColor"
+  [attr.data-position]="position"
+  [attr.data-open]="open() || undefined"
+>
+  <div #preLayers class="sm-prelayers" aria-hidden="true">
+    @for (color of getColors(); track $index) {
+      <div class="sm-prelayer" [style.background]="color"></div>
+    }
+  </div>
+  <header class="staggered-menu-header" aria-label="Main navigation header">
+    <div class="sm-logo" aria-label="Logo">
+      <img
+        [src]="logoUrl"
+        alt="Logo"
+        class="sm-logo-img"
+        draggable="false"
+        width="110"
+        height="24"
+      />
+    </div>
+    <button
+      #toggleBtn
+      class="sm-toggle"
+      [attr.aria-label]="open() ? 'Close menu' : 'Open menu'"
+      [attr.aria-expanded]="open()"
+      aria-controls="staggered-menu-panel"
+      (click)="toggleMenu()"
+      type="button"
+    >
+      <span class="sm-toggle-textWrap" aria-hidden="true">
+        <span #textInner class="sm-toggle-textInner">
+          @for (line of textLines(); track $index) {
+            <span class="sm-toggle-line">{{ line }}</span>
+          }
+        </span>
+      </span>
+      <span #icon class="sm-icon" aria-hidden="true">
+        <span #plusH class="sm-icon-line"></span>
+        <span #plusV class="sm-icon-line sm-icon-line-v"></span>
+      </span>
+    </button>
+  </header>
+
+  <aside id="staggered-menu-panel" #panel class="staggered-menu-panel" [attr.aria-hidden]="!open()">
+    <div class="sm-panel-inner">
+      <ul class="sm-panel-list" role="list" [attr.data-numbering]="displayItemNumbering || undefined">
+        @if (items && items.length) {
+          @for (item of items; track $index) {
+            <li class="sm-panel-itemWrap">
+              <a class="sm-panel-item" [href]="item.link" [attr.aria-label]="item.ariaLabel" [attr.data-index]="$index + 1">
+                <span class="sm-panel-itemLabel">{{ item.label }}</span>
+              </a>
+            </li>
+          }
+        } @else {
+          <li class="sm-panel-itemWrap" aria-hidden="true">
+            <span class="sm-panel-item">
+              <span class="sm-panel-itemLabel">No items</span>
+            </span>
+          </li>
+        }
+      </ul>
+      @if (displaySocials && socialItems && socialItems.length > 0) {
+        <div class="sm-socials" aria-label="Social links">
+          <h3 class="sm-socials-title">Socials</h3>
+          <ul class="sm-socials-list" role="list">
+            @for (social of socialItems; track $index) {
+              <li class="sm-socials-item">
+                <a [href]="social.link" target="_blank" rel="noopener noreferrer" class="sm-socials-link">
+                  {{ social.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </aside>
+</div>
+

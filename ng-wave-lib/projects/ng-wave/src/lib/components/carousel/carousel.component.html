@@ -1,0 +1,38 @@
+<div #container class="carousel-container" [class.round]="round" [style.width.px]="baseWidth"
+  [style.height.px]="round ? baseWidth : undefined" [style.border-radius]="round ? '50%' : undefined">
+  <div #track class="carousel-track" [style.width.px]="itemWidth()" [style.gap.px]="16" [style.perspective]="'1000px'">
+    @for (item of carouselItems(); track $index) {
+    <div class="carousel-item" [class.round]="round" [style.width.px]="itemWidth()"
+      [style.height.px]="round ? itemWidth() : undefined" [style.border-radius]="round ? '50%' : undefined"
+      [style.transform]="'rotateY(' + getRotateY($index) + 'deg)'">
+      <div class="carousel-item-header" [class.round]="round">
+        @if (item.icon) {
+        <span class="carousel-icon-container">
+          <img [src]="item.icon" class="carousel-icon" [alt]="item.title" />
+        </span>
+        }
+      </div>
+      <div class="carousel-item-content">
+        <div class="carousel-item-title">{{ item.title }}</div>
+        <p class="carousel-item-description">{{ item.description }}</p>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="carousel-indicators-container" [class.round]="round">
+    <div class="carousel-indicators">
+      @for (item of items; track $index) {
+      <button
+        type="button"
+        class="carousel-indicator"
+        [class.active]="getCurrentIndex() === $index"
+        [class.inactive]="getCurrentIndex() !== $index"
+        [style.transform]="getCurrentIndex() === $index ? 'scale(1.2)' : 'scale(1)'"
+        (click)="goToIndex($index)"
+        [attr.aria-label]="'Go to slide ' + ($index + 1)"
+        [attr.aria-current]="getCurrentIndex() === $index ? 'true' : null"
+      ></button>
+      }
+    </div>
+  </div>
+</div>

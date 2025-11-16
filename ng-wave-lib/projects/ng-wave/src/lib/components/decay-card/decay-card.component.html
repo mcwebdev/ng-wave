@@ -1,0 +1,17 @@
+<div #svgContainer class="decay-card-content" [style.width.px]="width" [style.height.px]="height">
+  <svg viewBox="-60 -75 720 900" preserveAspectRatio="xMidYMid slice" class="decay-card-svg">
+    <filter id="decayCardFilter">
+      <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="5" seed="4" stitchTiles="stitch" x="0%" y="0%"
+        width="100%" height="100%" result="turbulence1" />
+      <feDisplacementMap #displacementMap in="SourceGraphic" in2="turbulence1" scale="0" xChannelSelector="R"
+        yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" result="displacementMap3" />
+    </filter>
+    <g>
+      <image [attr.href]="image" [attr.alt]="imageAlt || 'Decay card image'" x="0" y="0" width="600" height="750"
+        filter="url(#decayCardFilter)" preserveAspectRatio="xMidYMid slice" />
+    </g>
+  </svg>
+  <div class="decay-card-text">
+    <ng-content></ng-content>
+  </div>
+</div>

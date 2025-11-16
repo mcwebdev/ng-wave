@@ -1,0 +1,12 @@
+<h2 #container [class]="'scroll-reveal ' + containerClassName">
+  <p [class]="'scroll-reveal-text ' + textClassName">
+    @for (item of words(); track item.index) {
+      @if (item.isSpace) {
+        {{ item.word }}
+      } @else {
+        <span class="word">{{ item.word }}</span>
+      }
+    }
+  </p>
+</h2>
+

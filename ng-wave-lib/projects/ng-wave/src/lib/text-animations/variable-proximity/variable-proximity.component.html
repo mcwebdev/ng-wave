@@ -1,0 +1,13 @@
+<span #containerRef [class]="'variable-proximity ' + className" [ngStyle]="getMergedStyle()">
+    @for (word of getWords(); track $index; let wordIndex = $index) {
+    <span style="display: inline-block; white-space: nowrap;">
+        @for (letter of word.split(''); track $index; let letterIndex = $index) {
+        <span [ngStyle]="getLetterStyle(getLetterGlobalIndex(wordIndex, letterIndex))" aria-hidden="true">{{ letter
+            }}</span>
+        }
+        @if (wordIndex < getWords().length - 1) { <span style="display: inline-block;">&nbsp;</span>
+    }
+</span>
+}
+<span class="sr-only">{{ label }}</span>
+</span>

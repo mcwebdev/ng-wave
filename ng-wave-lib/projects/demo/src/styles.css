@@ -1,0 +1,64 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  background: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Force white text for hero showcase */
+.hero-showcase,
+.hero-showcase *,
+.hero-title,
+.hero-subtitle,
+.hero-description,
+app-hero-showcase,
+app-hero-showcase * {
+  color: white !important;
+}
+
+.hero-title {
+  color: white !important;
+  font-size: 4rem !important;
+  font-weight: 800 !important;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-description {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Fix BlurText component text color */
+ngw-blur-text,
+ngw-blur-text *,
+ngw-blur-text p,
+ngw-blur-text span {
+  color: inherit !important;
+}

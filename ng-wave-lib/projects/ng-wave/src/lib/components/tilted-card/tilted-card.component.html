@@ -1,0 +1,43 @@
+<figure
+  #figure
+  class="tilted-card-figure"
+  [style.height]="containerHeight"
+  [style.width]="containerWidth"
+>
+  @if (showMobileWarning) {
+    <div class="tilted-card-mobile-alert">
+      This effect is not optimized for mobile. Check on desktop.
+    </div>
+  }
+
+  <div
+    #inner
+    class="tilted-card-inner"
+    [style.width]="imageWidth"
+    [style.height]="imageHeight"
+  >
+    <img
+      [src]="imageSrc"
+      [alt]="altText"
+      class="tilted-card-img"
+      [style.width]="imageWidth"
+      [style.height]="imageHeight"
+    />
+
+    @if (displayOverlayContent) {
+      <div class="tilted-card-overlay">
+        <ng-content></ng-content>
+      </div>
+    }
+  </div>
+
+  @if (showTooltip) {
+    <figcaption
+      #caption
+      class="tilted-card-caption"
+    >
+      {{ captionText }}
+    </figcaption>
+  }
+</figure>
+

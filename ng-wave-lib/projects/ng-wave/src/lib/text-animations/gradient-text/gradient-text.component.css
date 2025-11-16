@@ -1,0 +1,36 @@
+.animated-gradient-text {
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 200% 100%;
+  animation: gradient-shift linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.text-content {
+  position: relative;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: gradient-shift linear infinite;
+  z-index: 2;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+

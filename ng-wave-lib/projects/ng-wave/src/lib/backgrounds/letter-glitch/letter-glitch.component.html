@@ -1,0 +1,10 @@
+<div class="letter-glitch-container" [class]="className">
+  <canvas #canvasRef class="letter-glitch-canvas"></canvas>
+  @if (outerVignette) {
+    <div class="letter-glitch-outer-vignette"></div>
+  }
+  @if (centerVignette) {
+    <div class="letter-glitch-center-vignette"></div>
+  }
+</div>
+

@@ -1,0 +1,21 @@
+<div class="list" #containerRef [class]="className">
+  @for (item of grid(); track item.id) {
+    <div
+      class="item-wrapper"
+      [attr.data-key]="item.id"
+      (click)="onItemClick(item)"
+      (mouseenter)="onItemMouseEnter(item, $event)"
+      (mouseleave)="onItemMouseLeave(item, $event)"
+    >
+      <div class="item-img" [style.background-image]="'url(' + item.img + ')'">
+        @if (colorShiftOnHover) {
+          <div
+            class="color-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255,0,150,0.5), rgba(0,150,255,0.5)); opacity: 0; pointer-events: none; border-radius: 8px;"
+          ></div>
+        }
+      </div>
+    </div>
+  }
+</div>
+

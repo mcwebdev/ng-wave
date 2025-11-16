@@ -1,0 +1,5 @@
+<div #containerRef [class]="'magnetLines-container ' + className" [ngStyle]="getContainerStyle()">
+    @for (i of getSpans(); track i) {
+    <span [ngStyle]="getSpanStyle()"></span>
+    }
+</div>

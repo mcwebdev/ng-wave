@@ -1,0 +1,14 @@
+<div
+  #container
+  [class]="'falling-text-container ' + className"
+  style="position: relative; overflow: hidden;"
+>
+  <div
+    #textElement
+    class="falling-text-target"
+    [style.font-size]="fontSize"
+    style="line-height: 1.4;"
+  ></div>
+  <div #canvasContainer class="falling-text-canvas"></div>
+</div>
+

@@ -1,0 +1,17 @@
+<div [class]="'icon-btns ' + className">
+  @for (item of items; track $index) {
+    <button
+      class="icon-btn"
+      [class]="item.customClass || ''"
+      [attr.aria-label]="item.label"
+      type="button"
+    >
+      <span class="icon-btn__back" [ngStyle]="getBackgroundStyle(item.color)"></span>
+      <span class="icon-btn__front">
+        <span class="icon-btn__icon" aria-hidden="true" [innerHTML]="item.icon"></span>
+      </span>
+      <span class="icon-btn__label">{{ item.label }}</span>
+    </button>
+  }
+</div>
+

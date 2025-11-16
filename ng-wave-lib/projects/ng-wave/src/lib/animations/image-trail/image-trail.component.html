@@ -1,0 +1,7 @@
+<div #container class="content">
+    @for (url of items(); track $index) {
+    <div class="content__img">
+        <div class="content__img-inner" [style.background-image]="'url(' + url + ')'"></div>
+    </div>
+    }
+</div>

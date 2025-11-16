@@ -1,0 +1,8 @@
+<div
+  [class]="'glitch ' + (enableOnHover ? 'enable-on-hover' : '') + ' ' + className"
+  [ngStyle]="inlineStyles()"
+  [attr.data-text]="dataText"
+>
+  <span #content><ng-content></ng-content></span>
+</div>
+

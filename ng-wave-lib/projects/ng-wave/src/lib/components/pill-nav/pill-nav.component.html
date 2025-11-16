@@ -1,0 +1,85 @@
+<div class="pill-nav-container">
+  <nav [class]="'pill-nav ' + className" aria-label="Primary" [ngStyle]="getCssVars()">
+    @if (items.length > 0) {
+      @if (isRouterLink(items[0].href)) {
+        <a
+          class="pill-logo"
+          [href]="items[0].href"
+          aria-label="Home"
+          (mouseenter)="onLogoMouseEnter()"
+          role="menuitem"
+          #logoRef
+        >
+          <img [src]="logo" [alt]="logoAlt" #logoImgRef />
+        </a>
+      } @else {
+        <a
+          class="pill-logo"
+          [href]="items[0]?.href || '#'"
+          aria-label="Home"
+          (mouseenter)="onLogoMouseEnter()"
+          #logoRef
+        >
+          <img [src]="logo" [alt]="logoAlt" #logoImgRef />
+        </a>
+      }
+    }
+
+    <div class="pill-nav-items desktop-only" #navItemsRef>
+      <ul class="pill-list" role="menubar">
+        @for (item of items; track $index) {
+          <li role="none">
+            <a
+              role="menuitem"
+              [href]="item.href"
+              [class]="'pill' + (activeHref === item.href ? ' is-active' : '')"
+              [attr.aria-label]="item.ariaLabel || item.label"
+              (mouseenter)="onItemMouseEnter($index)"
+              (mouseleave)="onItemMouseLeave($index)"
+            >
+              <span
+                class="hover-circle"
+                aria-hidden="true"
+                #circleRef
+                [attr.data-index]="$index"
+              ></span>
+              <span class="label-stack">
+                <span class="pill-label">{{ item.label }}</span>
+                <span class="pill-label-hover" aria-hidden="true">
+                  {{ item.label }}
+                </span>
+              </span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <button
+      class="mobile-menu-button mobile-only"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle menu"
+      #hamburgerRef
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu-popover mobile-only" #mobileMenuRef [ngStyle]="getCssVars()">
+    <ul class="mobile-menu-list">
+      @for (item of items; track $index) {
+        <li>
+          <a
+            [href]="item.href"
+            [class]="'mobile-menu-link' + (activeHref === item.href ? ' is-active' : '')"
+            (click)="isMobileMenuOpen.set(false)"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
+

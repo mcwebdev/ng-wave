@@ -1,0 +1,78 @@
+<div #dragTarget class="draggable" [class]="className()" [ngStyle]="cssVars()">
+  <svg width="0" height="0">
+    <defs>
+      <filter id="pointLight">
+        <feGaussianBlur stdDeviation="1" result="blur" />
+        <feSpecularLighting
+          result="spec"
+          in="blur"
+          specularExponent="100"
+          [attr.specularConstant]="lightingIntensity()"
+          lightingColor="white"
+        >
+          <fePointLight #pointLight x="100" y="100" z="300" />
+        </feSpecularLighting>
+        <feComposite in="spec" in2="SourceGraphic" result="lit" />
+        <feComposite in="lit" in2="SourceAlpha" operator="in" />
+      </filter>
+
+      <filter id="pointLightFlipped">
+        <feGaussianBlur stdDeviation="10" result="blur" />
+        <feSpecularLighting
+          result="spec"
+          in="blur"
+          specularExponent="100"
+          [attr.specularConstant]="lightingIntensity() * 7"
+          lightingColor="white"
+        >
+          <fePointLight #pointLightFlipped x="100" y="100" z="300" />
+        </feSpecularLighting>
+        <feComposite in="spec" in2="SourceGraphic" result="lit" />
+        <feComposite in="lit" in2="SourceAlpha" operator="in" />
+      </filter>
+
+      <filter id="dropShadow">
+        <feDropShadow
+          dx="2"
+          dy="4"
+          [attr.stdDeviation]="3 * shadowIntensity()"
+          floodColor="black"
+          [attr.floodOpacity]="shadowIntensity()"
+        />
+      </filter>
+
+      <filter id="expandAndFill">
+        <feOffset dx="0" dy="0" in="SourceAlpha" result="shape" />
+        <feFlood floodColor="rgb(179,179,179)" result="flood" />
+        <feComposite operator="in" in="flood" in2="shape" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div #container class="sticker-container">
+    <div class="sticker-main">
+      <div class="sticker-lighting">
+        <img
+          [src]="imageSrc()"
+          alt=""
+          class="sticker-image"
+          draggable="false"
+          (contextmenu)="$event.preventDefault()"
+        />
+      </div>
+    </div>
+
+    <div class="flap">
+      <div class="flap-lighting">
+        <img
+          [src]="imageSrc()"
+          alt=""
+          class="flap-image"
+          draggable="false"
+          (contextmenu)="$event.preventDefault()"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+

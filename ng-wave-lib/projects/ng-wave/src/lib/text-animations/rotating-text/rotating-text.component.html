@@ -1,0 +1,22 @@
+<span [class]="'text-rotate ' + mainClassName">
+  <span class="text-rotate-sr-only">{{ currentText() }}</span>
+  <span
+    #textContainer
+    [class]="(splitBy === 'lines' ? 'text-rotate-lines' : 'text-rotate') + ' ' + splitLevelClassName"
+    aria-hidden="true"
+  >
+    @for (wordObj of elements(); track $index) {
+      <span [class]="'text-rotate-word ' + splitLevelClassName">
+        @for (char of wordObj.characters; track $index) {
+          <span [class]="'text-rotate-element ' + elementLevelClassName">
+            {{ char }}
+          </span>
+        }
+        @if (wordObj.needsSpace) {
+          <span class="text-rotate-space"> </span>
+        }
+      </span>
+    }
+  </span>
+</span>
+

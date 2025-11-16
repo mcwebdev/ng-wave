@@ -1,0 +1,15 @@
+<div
+  #magnet
+  [class]="wrapperClassName"
+  style="position: relative; display: inline-block;"
+>
+  <div
+    [class]="innerClassName"
+    [style.transform]="getTransform()"
+    [style.transition]="getTransition()"
+    style="will-change: transform;"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="card-grid bento-section" #gridRef [class]="className">
+  @if (enableStars) {
+    @for (card of cards; track $index) {
+      <div
+        class="particle-container"
+        [class]="getCardClasses(card, $index)"
+        [ngStyle]="getCardStyle(card)"
+        (mouseenter)="onCardMouseEnter($index, $event)"
+        (mouseleave)="onCardMouseLeave($index)"
+        (mousemove)="onCardMouseMove($index, $event)"
+        (click)="onCardClick($index, $event)"
+        #cardRef
+      >
+        <div class="magic-bento-card__header">
+          <div class="magic-bento-card__label">{{ card.label }}</div>
+        </div>
+        <div class="magic-bento-card__content">
+          <h2 class="magic-bento-card__title">{{ card.title }}</h2>
+          <p class="magic-bento-card__description">{{ card.description }}</p>
+        </div>
+      </div>
+    }
+  } @else {
+    @for (card of cards; track $index) {
+      <div
+        [class]="getCardClasses(card, $index)"
+        [ngStyle]="getCardStyle(card)"
+        (mouseenter)="onCardMouseEnter($index, $event)"
+        (mouseleave)="onCardMouseLeave($index)"
+        (mousemove)="onCardMouseMove($index, $event)"
+        (click)="onCardClick($index, $event)"
+        #cardRef
+      >
+        <div class="magic-bento-card__header">
+          <div class="magic-bento-card__label">{{ card.label }}</div>
+        </div>
+        <div class="magic-bento-card__content">
+          <h2 class="magic-bento-card__title">{{ card.title }}</h2>
+          <p class="magic-bento-card__description">{{ card.description }}</p>
+        </div>
+      </div>
+    }
+  }
+</div>
+

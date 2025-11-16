@@ -1,0 +1,42 @@
+<div
+  class="curved-loop-jacket"
+  [style.visibility]="ready() ? 'visible' : 'hidden'"
+  [style.cursor]="getCursorStyle()"
+  (pointerdown)="onPointerDown($event)"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp()"
+  (pointerleave)="onPointerLeave()"
+>
+  <svg class="curved-loop-svg" viewBox="0 0 1440 120">
+    <text
+      #measure
+      style="visibility: hidden; opacity: 0; pointer-events: none;"
+    >
+      {{ text() }}
+    </text>
+    <defs>
+      <path
+        #path
+        [id]="pathId"
+        [attr.d]="pathD()"
+        fill="none"
+        stroke="transparent"
+      ></path>
+    </defs>
+    @if (ready()) {
+      <text
+        [attr.font-weight]="'bold'"
+        [class]="className"
+      >
+        <textPath
+          #textPath
+          [attr.href]="'#' + pathId"
+          [attr.startOffset]="offset() + 'px'"
+        >
+          {{ totalText() }}
+        </textPath>
+      </text>
+    }
+  </svg>
+</div>
+

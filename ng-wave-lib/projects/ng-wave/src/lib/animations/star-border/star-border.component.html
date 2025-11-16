@@ -1,0 +1,70 @@
+@if (tag === 'button') {
+  <button
+    [class]="'star-border-container ' + className"
+    [ngStyle]="containerStyle()"
+  >
+    <div
+      class="border-gradient-bottom"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div
+      class="border-gradient-top"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </button>
+} @else if (tag === 'div') {
+  <div
+    [class]="'star-border-container ' + className"
+    [ngStyle]="containerStyle()"
+  >
+    <div
+      class="border-gradient-bottom"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div
+      class="border-gradient-top"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+} @else if (tag === 'span') {
+  <span
+    [class]="'star-border-container ' + className"
+    [ngStyle]="containerStyle()"
+  >
+    <div
+      class="border-gradient-bottom"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div
+      class="border-gradient-top"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </span>
+} @else if (tag === 'a') {
+  <a
+    [class]="'star-border-container ' + className"
+    [ngStyle]="containerStyle()"
+  >
+    <div
+      class="border-gradient-bottom"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div
+      class="border-gradient-top"
+      [ngStyle]="gradientStyle()"
+    ></div>
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </a>
+}
+

@@ -1,0 +1,27 @@
+<div class="slider-container" [class]="className">
+  <div
+    #sliderWrapper
+    class="slider-wrapper"
+    (mouseenter)="handleMouseEnter()"
+    (mouseleave)="handleMouseLeave()"
+    (touchstart)="handleMouseEnter()"
+    (touchend)="handleMouseLeave()"
+  >
+    <div #leftIcon class="icon" [innerHTML]="leftIcon"></div>
+
+    <div
+      #sliderRoot
+      class="slider-root"
+    >
+      <div #trackWrapper class="slider-track-wrapper">
+        <div class="slider-track">
+          <div #range class="slider-range" [style.width.%]="getRangePercentage()"></div>
+        </div>
+      </div>
+    </div>
+
+    <div #rightIcon class="icon" [innerHTML]="rightIcon"></div>
+  </div>
+  <p class="value-indicator">{{ getRoundedValue() }}</p>
+</div>
+

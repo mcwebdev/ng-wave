@@ -1,0 +1,11 @@
+<section #containerRef>
+    @for (text of getTexts(); track $index) {
+    <div [class]="parallaxClassName" [ngStyle]="getMergedParallaxStyle()">
+        <div [class]="scrollerClassName" [ngStyle]="getMergedScrollerStyle()">
+            @for (copy of getCopies(); track copy) {
+            <span [class]="className" [attr.data-first-copy]="copy === 0 ? '' : null">{{ text }}&nbsp;</span>
+            }
+        </div>
+    </div>
+    }
+</section>

@@ -1,0 +1,18 @@
+@if (gooeyFilter()) {
+  <svg class="goo-filter-container">
+    <defs>
+      <filter [id]="gooeyFilter()!.id">
+        <feGaussianBlur in="SourceGraphic" [attr.stdDeviation]="gooeyFilter()!.strength" result="blur" />
+        <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+      </filter>
+    </defs>
+  </svg>
+}
+<canvas
+  #canvas
+  class="pixel-canvas"
+  [class]="className()"
+  [style.filter]="gooeyFilter() ? 'url(#' + gooeyFilter()!.id + ')' : null"
+></canvas>
+

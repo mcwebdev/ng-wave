@@ -1,0 +1,23 @@
+<div class="gooey-nav-container" #container>
+  <nav #nav role="navigation" aria-label="Gooey navigation">
+    <ul role="menubar">
+      @for (item of items; track $index) {
+        <li role="none" [class.active]="activeIndex() === $index">
+          <a
+            role="menuitem"
+            [href]="item.href"
+            [attr.aria-label]="item.ariaLabel || item.label"
+            [attr.aria-current]="activeIndex() === $index ? 'page' : null"
+            (click)="handleClick($index); $event.preventDefault()"
+            (keydown)="handleKeyDown($event, $index)"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+  <span class="effect filter" #filter></span>
+  <span class="effect text" #text></span>
+</div>
+

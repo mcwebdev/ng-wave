@@ -1,0 +1,13 @@
+<div #container class="pixelated-image-card" [class]="className()" [ngStyle]="style()"
+    (mouseenter)="!isTouchDevice && handleEnter()" (mouseleave)="!isTouchDevice && handleLeave()"
+    (click)="isTouchDevice && handleClick()" (focus)="!isTouchDevice && handleEnter()"
+    (blur)="!isTouchDevice && handleLeave()" tabindex="0">
+    <div [style.padding-top]="aspectRatio()"></div>
+    <div class="pixelated-image-card__default" [attr.aria-hidden]="isActive">
+        <ng-content select="[slot=first]"></ng-content>
+    </div>
+    <div #active class="pixelated-image-card__active" [attr.aria-hidden]="!isActive">
+        <ng-content select="[slot=second]"></ng-content>
+    </div>
+    <div #pixelGrid class="pixelated-image-card__pixels"></div>
+</div>

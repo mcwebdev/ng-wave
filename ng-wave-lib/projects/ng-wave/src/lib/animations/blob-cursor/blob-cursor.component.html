@@ -1,0 +1,29 @@
+<div
+  #container
+  class="blob-container"
+  [style.z-index]="zIndex"
+>
+  @if (useFilter) {
+    <svg style="position: absolute; width: 0; height: 0;">
+      <filter [id]="filterId">
+        <feGaussianBlur in="SourceGraphic" result="blur" [attr.stdDeviation]="filterStdDeviation"></feGaussianBlur>
+        <feColorMatrix in="blur" [attr.values]="filterColorMatrixValues"></feColorMatrix>
+      </filter>
+    </svg>
+  }
+
+  <div class="blob-main" [style.filter]="useFilter ? 'url(#' + filterId + ')' : undefined">
+    @for (blob of [].constructor(trailCount); track $index) {
+      <div
+        class="blob"
+        [ngStyle]="getBlobStyle($index)"
+      >
+        <div
+          class="inner-dot"
+          [ngStyle]="getInnerDotStyle($index)"
+        ></div>
+      </div>
+    }
+  </div>
+</div>
+

@@ -1,0 +1,27 @@
+<div class="menu-wrap">
+  <nav class="menu">
+    @for (item of items; track $index) {
+      <div class="menu__item">
+        <a
+          class="menu__item-link"
+          [href]="item.link"
+          (mouseenter)="handleMouseEnter($event, $index)"
+          (mouseleave)="handleMouseLeave($event, $index)"
+        >
+          {{ item.text }}
+        </a>
+        <div class="marquee">
+          <div class="marquee__inner-wrap">
+            <div class="marquee__inner" aria-hidden="true">
+              @for (i of [0, 1, 2, 3]; track i) {
+                <span>{{ item.text }}</span>
+                <div class="marquee__img" [style.background-image]="'url(' + item.image + ')'"></div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </nav>
+</div>
+

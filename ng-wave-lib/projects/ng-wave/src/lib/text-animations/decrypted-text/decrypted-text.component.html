@@ -1,0 +1,8 @@
+<span #containerRef [class]="parentClassName" class="decrypted-text-wrapper">
+    <span class="sr-only">{{ displayText() }}</span>
+    <span aria-hidden="true">
+        @for (char of displayText(); track $index) {
+        <span [class]="getCharClass($index)">{{ char }}</span>
+        }
+    </span>
+</span>

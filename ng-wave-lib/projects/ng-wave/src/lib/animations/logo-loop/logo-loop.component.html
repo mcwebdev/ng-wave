@@ -1,0 +1,105 @@
+<div
+  #container
+  [class]="rootClassName()"
+  [ngStyle]="containerStyle()"
+  role="region"
+  [attr.aria-label]="ariaLabel()"
+>
+  <div
+    #track
+    class="logoloop__track"
+    (mouseenter)="handleMouseEnter()"
+    (mouseleave)="handleMouseLeave()"
+  >
+    @for (copyIndex of getCopyArray(); track copyIndex) {
+      <ul
+        class="logoloop__list"
+        [attr.aria-hidden]="copyIndex > 0"
+      >
+        @if (copyIndex === 0) {
+          <ul #seq class="logoloop__list" aria-hidden="false">
+            @for (item of logos(); track $index) {
+              <li class="logoloop__item" role="listitem">
+                @if (item.href) {
+                  <a
+                    class="logoloop__link"
+                    [href]="item.href"
+                    [attr.aria-label]="item.ariaLabel || item.alt || item.title || 'logo link'"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img
+                      [src]="item.src"
+                      [srcset]="item.srcSet"
+                      [sizes]="item.sizes"
+                      [width]="item.width"
+                      [height]="item.height"
+                      [alt]="item.alt || ''"
+                      [title]="item.title"
+                      loading="lazy"
+                      decoding="async"
+                      draggable="false"
+                    />
+                  </a>
+                } @else {
+                  <img
+                    [src]="item.src"
+                    [srcset]="item.srcSet"
+                    [sizes]="item.sizes"
+                    [width]="item.width"
+                    [height]="item.height"
+                    [alt]="item.alt || ''"
+                    [title]="item.title"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  />
+                }
+              </li>
+            }
+          </ul>
+        } @else {
+          @for (item of logos(); track $index) {
+            <li class="logoloop__item" role="listitem">
+              @if (item.href) {
+                <a
+                  class="logoloop__link"
+                  [href]="item.href"
+                  [attr.aria-label]="item.ariaLabel || item.alt || item.title || 'logo link'"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <img
+                    [src]="item.src"
+                    [srcset]="item.srcSet"
+                    [sizes]="item.sizes"
+                    [width]="item.width"
+                    [height]="item.height"
+                    [alt]="item.alt || ''"
+                    [title]="item.title"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  />
+                </a>
+              } @else {
+                <img
+                  [src]="item.src"
+                  [srcset]="item.srcSet"
+                  [sizes]="item.sizes"
+                  [width]="item.width"
+                  [height]="item.height"
+                  [alt]="item.alt || ''"
+                  [title]="item.title"
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                />
+              }
+            </li>
+          }
+        }
+      </ul>
+    }
+  </div>
+</div>
