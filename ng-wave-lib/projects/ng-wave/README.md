@@ -1,4 +1,4 @@
-# NG Wave
+# NG Wave Angular Component Library
 
 A comprehensive Angular component library with **130+ animated, interactive, and customizable components**. Converted from React Bits with full feature parity, built with Angular Signals, GSAP animations, and Three.js for stunning visual effects.
 
