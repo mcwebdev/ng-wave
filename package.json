@@ -1,0 +1,12 @@
+{
+    "name": "ng-wave-root",
+    "version": "0.0.0",
+    "private": true,
+    "workspaces": [
+        "ng-wave-lib"
+    ],
+    "scripts": {
+        "build": "npm run build --workspace=ng-wave-lib",
+        "prebuild": "ls -R"
+    }
+}
